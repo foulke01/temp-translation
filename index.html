@@ -1,1 +1,1201 @@
-file:///C:/Users/Foulke01/OneDrive%20-%20Cancer%20Research%20UK/Downloads/translational_benchmarking%20(4).html
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Translational Innovation Benchmarking</title>
+<style>
+/* Self-contained — no external font dependencies */
+
+:root {
+–bg: #f5f2ec;
+–surface: #fff;
+–border: #e0dbd0;
+–text: #1a1a1a;
+–muted: #6b6560;
+
+–oncode:   #0046b8;
+–wellcome: #e5007d;
+–lifearc:  #005f3e;
+–stanford: #8c1515;
+–mit:      #a31f34;
+–cruk:     #2e2d62;
+–mrc:      #007c91;
+
+–oncode-light:   #e8eef8;
+–wellcome-light: #fde8f3;
+–lifearc-light:  #e6f3ee;
+–stanford-light: #f5e8e8;
+–mit-light:      #fae8eb;
+–cruk-light:     #eae9f0;
+–mrc-light:      #e0f4f7;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+background: var(–bg);
+color: var(–text);
+font-family: -apple-system, ‘Segoe UI’, system-ui, sans-serif;
+font-size: 13px;
+line-height: 1.6;
+min-width: 1200px;
+}
+
+/* ─── HEADER ─────────────────────── */
+header {
+background: var(–text);
+padding: 36px 48px 30px;
+display: flex;
+align-items: flex-end;
+gap: 40px;
+}
+.h-eyebrow {
+font-family: ‘Cascadia Code’, ‘Consolas’, ‘SF Mono’, ‘Menlo’, ‘Courier New’, monospace;
+font-size: 9px;
+letter-spacing: 0.18em;
+color: #888;
+text-transform: uppercase;
+margin-bottom: 8px;
+}
+header h1 {
+font-family: system-ui, -apple-system, ‘Segoe UI’, sans-serif;
+font-size: 30px;
+font-weight: 800;
+color: #fff;
+line-height: 1.05;
+letter-spacing: -0.5px;
+}
+header h1 em { color: #f0d060; font-style: normal; }
+.h-meta {
+margin-left: auto;
+text-align: right;
+font-family: ‘Cascadia Code’, ‘Consolas’, ‘SF Mono’, ‘Menlo’, ‘Courier New’, monospace;
+font-size: 9px;
+color: #666;
+line-height: 2;
+}
+
+/* ─── ORG LEGEND STRIP ─────────────── */
+.org-strip {
+background: var(–surface);
+border-bottom: 2px solid var(–border);
+padding: 14px 48px;
+display: flex;
+gap: 8px;
+align-items: center;
+flex-wrap: wrap;
+}
+.org-chip {
+display: flex;
+align-items: center;
+gap: 6px;
+padding: 5px 12px;
+border-radius: 100px;
+font-family: system-ui, -apple-system, ‘Segoe UI’, sans-serif;
+font-size: 11px;
+font-weight: 600;
+border: 1.5px solid;
+cursor: pointer;
+transition: opacity 0.15s;
+white-space: nowrap;
+}
+.org-chip:hover { opacity: 0.8; }
+.org-dot { width: 7px; height: 7px; border-radius: 50%; }
+
+/* ─── PIPELINE MATRIX ──────────────── */
+.pipeline-section {
+padding: 32px 48px 24px;
+}
+.pipeline-section > h2 {
+font-family: system-ui, -apple-system, ‘Segoe UI’, sans-serif;
+font-size: 18px;
+font-weight: 700;
+margin-bottom: 6px;
+color: var(–text);
+}
+.section-intro {
+font-size: 12px;
+color: var(–muted);
+max-width: 760px;
+margin-bottom: 20px;
+line-height: 1.7;
+}
+
+/* stage col headers */
+.stage-headers {
+display: grid;
+grid-template-columns: 160px repeat(6, 1fr);
+gap: 3px;
+margin-bottom: 6px;
+}
+.sh {
+text-align: center;
+font-family: ‘Cascadia Code’, ‘Consolas’, ‘SF Mono’, ‘Menlo’, ‘Courier New’, monospace;
+font-size: 8.5px;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+color: var(–muted);
+padding: 5px 4px;
+border-bottom: 2px solid var(–border);
+}
+
+/* each org row */
+.org-row {
+display: grid;
+grid-template-columns: 160px repeat(6, 1fr);
+gap: 3px;
+margin-bottom: 3px;
+opacity: 1;
+transition: opacity 0.2s;
+}
+.org-label {
+display: flex;
+flex-direction: column;
+justify-content: center;
+padding: 8px 10px;
+border-radius: 6px;
+border-left: 3px solid;
+}
+.org-label-name {
+font-family: system-ui, -apple-system, ‘Segoe UI’, sans-serif;
+font-size: 11px;
+font-weight: 700;
+line-height: 1.2;
+}
+.org-label-sub {
+font-family: ‘Cascadia Code’, ‘Consolas’, ‘SF Mono’, ‘Menlo’, ‘Courier New’, monospace;
+font-size: 8px;
+color: var(–muted);
+margin-top: 2px;
+}
+
+.stage-cell {
+border-radius: 5px;
+padding: 8px 8px;
+min-height: 56px;
+display: flex;
+flex-direction: column;
+justify-content: flex-start;
+gap: 3px;
+border: 1.5px solid transparent;
+transition: border-color 0.15s, transform 0.12s;
+cursor: default;
+position: relative;
+overflow: hidden;
+}
+.stage-cell:hover {
+border-color: rgba(0,0,0,0.2);
+transform: translateY(-1px);
+z-index: 2;
+}
+.sc-title {
+font-family: system-ui, -apple-system, ‘Segoe UI’, sans-serif;
+font-size: 9px;
+font-weight: 700;
+letter-spacing: 0.04em;
+line-height: 1.2;
+}
+.sc-desc {
+font-size: 8.5px;
+color: #555;
+line-height: 1.4;
+}
+.sc-badge {
+display: inline-block;
+font-family: ‘Cascadia Code’, ‘Consolas’, ‘SF Mono’, ‘Menlo’, ‘Courier New’, monospace;
+font-size: 7.5px;
+padding: 1px 5px;
+border-radius: 2px;
+margin-top: 2px;
+align-self: flex-start;
+}
+.empty { background: #f8f7f3; border-color: #ece9e2; }
+.empty .sc-title { color: #ccc; }
+
+/* strength indicators */
+.str-bar {
+position: absolute;
+bottom: 0; left: 0; right: 0;
+height: 3px;
+border-radius: 0 0 4px 4px;
+}
+
+/* ─── ORG PROFILES GRID ─────────────── */
+.profiles-section {
+padding: 24px 48px 32px;
+border-top: 2px solid var(–border);
+}
+.profiles-section > h2 {
+font-family: system-ui, -apple-system, ‘Segoe UI’, sans-serif;
+font-size: 18px;
+font-weight: 700;
+margin-bottom: 6px;
+}
+.profiles-grid {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 14px;
+margin-top: 18px;
+}
+.profile-card {
+background: var(–surface);
+border: 1.5px solid var(–border);
+border-radius: 10px;
+overflow: hidden;
+transition: box-shadow 0.2s;
+}
+.profile-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+.pc-header {
+padding: 14px 16px 10px;
+border-bottom: 1px solid var(–border);
+display: flex;
+gap: 10px;
+align-items: flex-start;
+}
+.pc-icon {
+width: 36px; height: 36px;
+border-radius: 8px;
+display: flex; align-items: center; justify-content: center;
+font-size: 17px;
+flex-shrink: 0;
+font-family: system-ui, -apple-system, ‘Segoe UI’, sans-serif;
+font-weight: 800;
+font-size: 11px;
+color: white;
+}
+.pc-name { font-family: system-ui, -apple-system, ‘Segoe UI’, sans-serif; font-size: 13px; font-weight: 700; line-height: 1.2; }
+.pc-country { font-family: ‘Cascadia Code’, ‘Consolas’, ‘SF Mono’, ‘Menlo’, ‘Courier New’, monospace; font-size: 9px; color: var(–muted); }
+.pc-body { padding: 12px 16px; }
+.pc-stat-row { display: flex; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
+.pc-stat {
+background: var(–bg);
+border-radius: 5px;
+padding: 5px 9px;
+font-family: ‘Cascadia Code’, ‘Consolas’, ‘SF Mono’, ‘Menlo’, ‘Courier New’, monospace;
+font-size: 9px;
+}
+.pc-stat strong { font-size: 13px; font-family: system-ui, -apple-system, ‘Segoe UI’, sans-serif; display: block; line-height: 1.1; }
+.pc-section-title {
+font-family: ‘Cascadia Code’, ‘Consolas’, ‘SF Mono’, ‘Menlo’, ‘Courier New’, monospace;
+font-size: 8.5px;
+letter-spacing: 0.12em;
+text-transform: uppercase;
+color: var(–muted);
+margin: 10px 0 4px;
+}
+.pc-text { font-size: 11px; color: #444; line-height: 1.65; }
+.pc-pills { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
+.pc-pill {
+padding: 3px 8px;
+border-radius: 100px;
+font-size: 9px;
+font-family: ‘Cascadia Code’, ‘Consolas’, ‘SF Mono’, ‘Menlo’, ‘Courier New’, monospace;
+border: 1px solid;
+}
+.pill-green { background: #e8f5e9; color: #2e7d32; border-color: #a5d6a7; }
+.pill-amber { background: #fff8e1; color: #f57f17; border-color: #ffe082; }
+.pill-blue  { background: #e3f2fd; color: #1565c0; border-color: #90caf9; }
+.pill-red   { background: #fce4ec; color: #b71c1c; border-color: #f48fb1; }
+
+/* ─── WHAT CRUK COULD LEARN ─────────── */
+.lessons-section {
+padding: 24px 48px 36px;
+border-top: 2px solid var(–border);
+}
+.lessons-section > h2 {
+font-family: system-ui, -apple-system, ‘Segoe UI’, sans-serif;
+font-size: 18px;
+font-weight: 700;
+margin-bottom: 6px;
+}
+.lessons-grid {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 14px;
+margin-top: 18px;
+}
+.lesson-card {
+background: var(–surface);
+border: 1.5px solid var(–border);
+border-radius: 10px;
+padding: 16px;
+border-left: 4px solid;
+transition: box-shadow 0.2s;
+}
+.lesson-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.07); }
+.lc-header { display: flex; gap: 10px; align-items: center; margin-bottom: 8px; }
+.lc-from {
+font-family: ‘Cascadia Code’, ‘Consolas’, ‘SF Mono’, ‘Menlo’, ‘Courier New’, monospace;
+font-size: 8.5px;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+padding: 2px 7px;
+border-radius: 3px;
+color: white;
+}
+.lc-title { font-family: system-ui, -apple-system, ‘Segoe UI’, sans-serif; font-size: 13px; font-weight: 700; }
+.lc-body { font-size: 11.5px; color: #444; line-height: 1.7; }
+.lc-impact {
+margin-top: 10px;
+padding: 8px 10px;
+border-radius: 6px;
+background: var(–bg);
+font-size: 11px;
+color: var(–muted);
+line-height: 1.6;
+}
+.lc-impact strong { color: var(–text); }
+
+/* ─── RADAR / COVERAGE TABLE ─────────── */
+.coverage-section {
+padding: 24px 48px 36px;
+border-top: 2px solid var(–border);
+}
+.coverage-section > h2 {
+font-family: system-ui, -apple-system, ‘Segoe UI’, sans-serif;
+font-size: 18px;
+font-weight: 700;
+margin-bottom: 18px;
+}
+.cov-table {
+width: 100%;
+border-collapse: separate;
+border-spacing: 3px;
+}
+.cov-table th {
+font-family: ‘Cascadia Code’, ‘Consolas’, ‘SF Mono’, ‘Menlo’, ‘Courier New’, monospace;
+font-size: 9px;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+color: var(–muted);
+padding: 6px 10px;
+text-align: center;
+background: var(–bg);
+border-radius: 4px;
+}
+.cov-table td {
+padding: 8px 10px;
+border-radius: 5px;
+text-align: center;
+font-size: 12px;
+}
+.cov-table .row-label {
+text-align: left;
+font-family: system-ui, -apple-system, ‘Segoe UI’, sans-serif;
+font-size: 11px;
+font-weight: 600;
+padding-left: 4px;
+background: transparent;
+}
+.cov-5 { background: #1b5e20; color: white; }
+.cov-4 { background: #2e7d32; color: white; }
+.cov-3 { background: #f9a825; color: white; }
+.cov-2 { background: #ff6f00; color: white; }
+.cov-1 { background: #f5f5f5; color: #aaa; }
+
+/* tooltips */
+.stage-cell[title]:hover::after {
+content: attr(title);
+position: absolute;
+bottom: calc(100% + 4px);
+left: 0;
+background: #1a1a1a;
+color: white;
+font-size: 10px;
+padding: 6px 10px;
+border-radius: 5px;
+white-space: pre-wrap;
+max-width: 220px;
+z-index: 100;
+pointer-events: none;
+line-height: 1.5;
+}
+
+@keyframes fadeUp {
+from { opacity:0; transform:translateY(14px); }
+to   { opacity:1; transform:translateY(0); }
+}
+.profile-card { animation: fadeUp 0.35s ease both; }
+.profile-card:nth-child(1){ animation-delay:0.04s }
+.profile-card:nth-child(2){ animation-delay:0.1s }
+.profile-card:nth-child(3){ animation-delay:0.16s }
+.profile-card:nth-child(4){ animation-delay:0.22s }
+.profile-card:nth-child(5){ animation-delay:0.28s }
+.profile-card:nth-child(6){ animation-delay:0.34s }
+</style>
+
+</head>
+<body>
+
+<!-- ══ HEADER ══ -->
+
+<header>
+  <div>
+    <div class="h-eyebrow">CRUK / CRH · Translational Strategy</div>
+    <h1>Global Benchmarking:<br><em>Best-in-Class</em> Innovation Organisations</h1>
+  </div>
+  <div class="h-meta">
+    Comparators: Oncode Institute · Wellcome · LifeArc · Stanford SPARK · MIT Deshpande · MRC<br>
+    Focus: Translational models, funding architecture, pipeline coverage, learnable lessons<br>
+    March 2026
+  </div>
+</header>
+
+<!-- ══ ORG STRIP ══ -->
+
+<div class="org-strip">
+  <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#999;letter-spacing:0.1em;text-transform:uppercase;margin-right:6px;">Organisations</span>
+  <div class="org-chip" style="color:var(--oncode);border-color:var(--oncode);background:var(--oncode-light)"><div class="org-dot" style="background:var(--oncode)"></div>Oncode Institute</div>
+  <div class="org-chip" style="color:var(--wellcome);border-color:var(--wellcome);background:var(--wellcome-light)"><div class="org-dot" style="background:var(--wellcome)"></div>Wellcome Trust / Leap</div>
+  <div class="org-chip" style="color:var(--lifearc);border-color:var(--lifearc);background:var(--lifearc-light)"><div class="org-dot" style="background:var(--lifearc)"></div>LifeArc</div>
+  <div class="org-chip" style="color:var(--stanford);border-color:var(--stanford);background:var(--stanford-light)"><div class="org-dot" style="background:var(--stanford)"></div>Stanford SPARK</div>
+  <div class="org-chip" style="color:var(--mit);border-color:var(--mit);background:var(--mit-light)"><div class="org-dot" style="background:var(--mit)"></div>MIT Deshpande</div>
+  <div class="org-chip" style="color:var(--cruk);border-color:var(--cruk);background:var(--cruk-light)"><div class="org-dot" style="background:var(--cruk)"></div>CRUK / CRH (current)</div>
+  <div class="org-chip" style="color:var(--mrc);border-color:var(--mrc);background:var(--mrc-light)"><div class="org-dot" style="background:var(--mrc)"></div>Medical Research Council</div>
+</div>
+
+<!-- ══ PIPELINE COVERAGE MATRIX ══ -->
+
+<div class="pipeline-section">
+  <h2>Translational Pipeline Coverage by Organisation</h2>
+  <p class="section-intro">How each organisation covers the translational spectrum from basic discovery through to market. Depth of colour indicates strength of support. Hover cells for detail. The final row (CRUK/CRH) shows current state; gaps become immediately visible by comparison.</p>
+
+  <div class="stage-headers">
+    <div class="sh"></div>
+    <div class="sh">Basic Discovery &amp; Target ID</div>
+    <div class="sh">Translational PoC / De-risking</div>
+    <div class="sh">Product Dev &amp; IND-Enabling</div>
+    <div class="sh">Spin-out / Venture</div>
+    <div class="sh">Clinical Trials</div>
+    <div class="sh">Regulatory &amp; Market</div>
+  </div>
+
+  <!-- ONCODE -->
+
+  <div class="org-row">
+    <div class="org-label" style="background:var(--oncode-light);border-left-color:var(--oncode)">
+      <div class="org-label-name" style="color:var(--oncode)">Oncode Institute</div>
+      <div class="org-label-sub">Netherlands · €325M NGF + KWF</div>
+    </div>
+    <div class="stage-cell" style="background:#e8eef8;border-color:#c0cce8" title="900+ researchers across 13 partner institutes. Fundamental cancer biology with translational mandate baked in from day one. PI researchers are 'Oncode Investigators' with valorisation team embedded.">
+      <div class="sc-title" style="color:var(--oncode)">World-class OI Network</div>
+      <div class="sc-desc">900+ researchers, 13 institutes, unified valorisation</div>
+      <div class="sc-badge" style="background:var(--oncode);color:white">Proactive BD per 15 OIs</div>
+      <div class="str-bar" style="background:var(--oncode);opacity:0.8"></div>
+    </div>
+    <div class="stage-cell" style="background:#e8eef8;border-color:#c0cce8" title="TechDev Fund: specialised de-risking activities not supported by TTOs. CPoC programme for clinical PoC. Link-to-Clinic bridges researchers directly to clinical teams. Strongly valorisation-focused from basic stage.">
+      <div class="sc-title" style="color:var(--oncode)">TechDev + CPoC Funds</div>
+      <div class="sc-desc">Clinical PoC programme. Link-to-Clinic. Proactive patent portfolio building</div>
+      <div class="str-bar" style="background:var(--oncode);opacity:0.85"></div>
+    </div>
+    <div class="stage-cell" style="background:#e8eef8;border-color:#c0cce8" title="Oncode Accelerator: €325M NGF programme. Four therapy workstreams (small molecules, biologics, cell/gene, vaccines). Three innovation platforms: patient cohorts, organoids, AI. 35+ public/private partners building shared preclinical infrastructure.">
+      <div class="sc-title" style="color:var(--oncode)">Oncode Accelerator</div>
+      <div class="sc-desc">€325M NGF. Patient cohorts + organoids + AI platforms. 35+ partners</div>
+      <div class="sc-badge" style="background:var(--oncode);color:white">All 4 modalities incl. cell/gene</div>
+      <div class="str-bar" style="background:var(--oncode)"></div>
+    </div>
+    <div class="stage-cell" style="background:#e8eef8;border-color:#c0cce8" title="Oncode Oncology Bridge Fund: pre-seed to Seed. €1 invested → €14 external capital unlocked. 12+ spin-offs launched. Laigo Bio (€11.5M Series A) is flagship example.">
+      <div class="sc-title" style="color:var(--oncode)">Oncology Bridge Fund</div>
+      <div class="sc-desc">Pre-seed finance. 12+ spin-offs. €1 → €14 external capital leverage</div>
+      <div class="sc-badge" style="background:#1b5e20;color:white">14× capital leverage</div>
+      <div class="str-bar" style="background:var(--oncode)"></div>
+    </div>
+    <div class="stage-cell" style="background:#e8eef8;border-color:#c0cce8" title="CPoC programme supports investigator-initiated clinical studies. ECMC-equivalent relationships. Industry partnerships for Phase II progression.">
+      <div class="sc-title" style="color:var(--oncode)">CPoC Clinical Programme</div>
+      <div class="sc-desc">Expert support + funding for investigator-initiated clinical studies</div>
+      <div class="str-bar" style="background:var(--oncode);opacity:0.75"></div>
+    </div>
+    <div class="stage-cell" style="background:#dde8f0;border-color:#c0cce8" title="Valorisation team focused on licensing — currently 20% of patents licensed/optioned (target: 40% by 2027). Not primary focus but growing.">
+      <div class="sc-title" style="color:var(--oncode)">Licensing Focus</div>
+      <div class="sc-desc">20% → 40% patent licence target by 2027. Growing regulatory pathway support</div>
+      <div class="str-bar" style="background:var(--oncode);opacity:0.55"></div>
+    </div>
+  </div>
+
+  <!-- WELLCOME -->
+
+  <div class="org-row">
+    <div class="org-label" style="background:var(--wellcome-light);border-left-color:var(--wellcome)">
+      <div class="org-label-name" style="color:var(--wellcome)">Wellcome Trust / Leap</div>
+      <div class="org-label-sub">UK · £37.6B endowment · £1.1B/yr</div>
+    </div>
+    <div class="stage-cell" style="background:#fde8f3;border-color:#f5c0db" title="World's largest non-governmental funder of biomedical research. Grant funding via fellowships and collaborative awards. Institutional Strategic Support Fund (ISSF) distributes to universities. Open funding across any disease area.">
+      <div class="sc-title" style="color:var(--wellcome)">Largest non-govt biomedical funder</div>
+      <div class="sc-desc">Fellowships, collaborative awards, ISSF. Any disease area. Rigorous peer review</div>
+      <div class="str-bar" style="background:var(--wellcome)"></div>
+    </div>
+    <div class="stage-cell" style="background:#fde8f3;border-color:#f5c0db" title="Translation Fund (now closed to new applications but historically influential model): funded PoC to FIH stage. Required unmet need, novel solution, realistic market expectation. Wellcome actively managed IP. Translation Awards up to $8.9M per project.">
+      <div class="sc-title" style="color:var(--wellcome)">Translation Fund (legacy)</div>
+      <div class="sc-desc">PoC → FIH. IP management by Wellcome. Up to $8.9M per project. Unmet need required</div>
+      <div class="str-bar" style="background:var(--wellcome);opacity:0.8"></div>
+    </div>
+    <div class="stage-cell" style="background:#fde8f3;border-color:#f5c0db" title="Wellcome Leap: DARPA-inspired, US non-profit. Non-linear R&D — discovery and innovation simultaneously. Boldness + failure as feature. 10 programmes in 4 years. Contracts issued in days-weeks, not months. No central facility — best minds work from home institutions.">
+      <div class="sc-title" style="color:var(--wellcome)">Wellcome Leap (DARPA model)</div>
+      <div class="sc-desc">Non-linear R&D. Boldness + failure as feature. Days to contract. 10 programmes</div>
+      <div class="sc-badge" style="background:var(--wellcome);color:white">Unique: discovery + innovation simultaneous</div>
+      <div class="str-bar" style="background:var(--wellcome)"></div>
+    </div>
+    <div class="stage-cell" style="background:#fde8f3;border-color:#f5c0db" title="Wellcome Trust spun out Syncona as listed biotech investment vehicle. Programme-Related Investments policy allows equity investment in companies. Wellcome genome campus companies. Partnership with Translation Fund alumni.">
+      <div class="sc-title" style="color:var(--wellcome)">Syncona + PRIs</div>
+      <div class="sc-desc">Listed biotech vehicle. Programme-Related Investments. Genome campus ecosystem</div>
+      <div class="str-bar" style="background:var(--wellcome);opacity:0.8"></div>
+    </div>
+    <div class="stage-cell" style="background:#f8d0e8;border-color:#f0b0d0" title="Wellcome funds clinical trials through grant mechanisms. Global clinical trials including low- and middle-income countries. Clinical trials in NHS funded through AcoRD. Large-scale trials infrastructure (e.g., Ebola Emergency Initiative).">
+      <div class="sc-title" style="color:var(--wellcome)">Clinical Trials (grant route)</div>
+      <div class="sc-desc">NHS AcoRD cost attribution. LMIC trials. Large-scale platform trials</div>
+      <div class="str-bar" style="background:var(--wellcome);opacity:0.75"></div>
+    </div>
+    <div class="stage-cell" style="background:#f0c0dc;border-color:#e8a0c8" title="Not primary focus of Wellcome. Historically Translation Fund covered some regulatory evidence generation. Regulatory agency engagement less emphasised than research outputs.">
+      <div class="sc-title" style="color:var(--wellcome)">Regulatory (limited)</div>
+      <div class="sc-desc">Translation Fund covered reg evidence. Less systematic regulatory pathway support</div>
+      <div class="str-bar" style="background:var(--wellcome);opacity:0.45"></div>
+    </div>
+  </div>
+
+  <!-- LIFEARC -->
+
+  <div class="org-row">
+    <div class="org-label" style="background:var(--lifearc-light);border-left-color:var(--lifearc)">
+      <div class="org-label-name" style="color:var(--lifearc)">LifeArc</div>
+      <div class="org-label-sub">UK · £1.3B committed by 2030 · Self-funded</div>
+    </div>
+    <div class="stage-cell" style="background:#e6f3ee;border-color:#b0d8c4" title="Core expertise in early translational science. Drug and diagnostics discovery. Technology transfer and IP. Translational Challenges: disease-area focused programmes (MND, cystic fibrosis, rare disease, AMR). Target-agnostic with deep scientific expertise.">
+      <div class="sc-title" style="color:var(--lifearc)">Translational Challenges model</div>
+      <div class="sc-desc">Disease-area programmes: MND, CF/AMR, rare disease. Own scientific teams embedded</div>
+      <div class="str-bar" style="background:var(--lifearc);opacity:0.8"></div>
+    </div>
+    <div class="stage-cell" style="background:#e6f3ee;border-color:#b0d8c4" title="Core mission: bridge academic to clinical. Translational Development Fund in partnership with LSTM. PACE programme (£30M, AMR). Drug Discovery Programmes with expert advisory support + data packages + target product profiles + regulatory guidance as standard.">
+      <div class="sc-title" style="color:var(--lifearc)">TDF + PACE + Drug Discovery</div>
+      <div class="sc-desc">Wraparound support: data packages, TPP definition, regulator engagement. £30M PACE</div>
+      <div class="sc-badge" style="background:var(--lifearc);color:white">Strategic support standard, not add-on</div>
+      <div class="str-bar" style="background:var(--lifearc)"></div>
+    </div>
+    <div class="stage-cell" style="background:#e6f3ee;border-color:#b0d8c4" title="Own drug discovery and diagnostics discovery capability — scientists embedded in translational programmes. CMC knowledge, regulatory expertise in-house. Pembrolizumab (Keytruda), lecanemab, Carbaplex came through LifeArc route. 5 licensed medicines in total.">
+      <div class="sc-title" style="color:var(--lifearc)">In-house discovery + 5 licensed medicines</div>
+      <div class="sc-desc">Own scientists. DD + diagnostics. Pembrolizumab (Keytruda) alumni. CMC capability</div>
+      <div class="sc-badge" style="background:#1b5e20;color:white">5 marketed medicines</div>
+      <div class="str-bar" style="background:var(--lifearc)"></div>
+    </div>
+    <div class="stage-cell" style="background:#e6f3ee;border-color:#b0d8c4" title="LifeArc Ventures: Seed and Series A stage investments. 17-company portfolio. 2024: 3 new + several follow-on. Dual mandate: financial returns fund the charity + patient impact. Co-invests with major VCs.">
+      <div class="sc-title" style="color:var(--lifearc)">LifeArc Ventures</div>
+      <div class="sc-desc">Seed + Series A. 17 portfolio cos. Dual mandate: returns + patient impact. Co-invests</div>
+      <div class="str-bar" style="background:var(--lifearc)"></div>
+    </div>
+    <div class="stage-cell" style="background:#d8ecdf;border-color:#a0d0b4" title="LifeArc supports FIH and early clinical development through partnerships. CDD equivalent capability. Collaborates with CRH/CRUK on C-Further for paediatric oncology. Clinical trial support as part of Translational Challenges.">
+      <div class="sc-title" style="color:var(--lifearc)">Clinical partnerships</div>
+      <div class="sc-desc">FIH support via partnerships. C-Further co-founder. PACE trial support</div>
+      <div class="str-bar" style="background:var(--lifearc);opacity:0.7"></div>
+    </div>
+    <div class="stage-cell" style="background:#e6f3ee;border-color:#b0d8c4" title="Regulatory and IP expertise is core LifeArc capability — not outsourced. Guidance on strengthening data packages for regulatory submission standard within Translational Challenges. PACE awardees get regulator engagement support built in.">
+      <div class="sc-title" style="color:var(--lifearc)">Regulatory &amp; IP core capability</div>
+      <div class="sc-desc">Built-in reg pathway support. IP expertise central. PACE: regulator engagement standard</div>
+      <div class="str-bar" style="background:var(--lifearc)"></div>
+    </div>
+  </div>
+
+  <!-- STANFORD SPARK -->
+
+  <div class="org-row">
+    <div class="org-label" style="background:var(--stanford-light);border-left-color:var(--stanford)">
+      <div class="org-label-name" style="color:var(--stanford)">Stanford SPARK</div>
+      <div class="org-label-sub">USA · $50K/yr per project · 60+ global affiliates</div>
+    </div>
+    <div class="stage-cell" style="background:#f5e8e8;border-color:#e0c4c4" title="Strong basic science base at Stanford. SPARK recruits unlicensed disclosures from technology licensing office. Faculty bring discoveries into SPARK system annually. Open application + internal TLO pipeline dual route.">
+      <div class="sc-title" style="color:var(--stanford)">TLO pipeline + open applications</div>
+      <div class="sc-desc">Annual selection from unlicensed TLO disclosures + open faculty applications. 10-15/yr</div>
+      <div class="str-bar" style="background:var(--stanford);opacity:0.7"></div>
+    </div>
+    <div class="stage-cell" style="background:#f5e8e8;border-color:#e0c4c4" title="DEFINING DIFFERENTIATOR: $50K/yr + 100+ volunteer industry experts providing weekly mentoring. Every Wednesday meeting — lectures + project updates. All university members can attend (not just funded scholars). Education as primary mechanism, funding as enabler.">
+      <div class="sc-title" style="color:var(--stanford)">$50K + 100+ volunteer experts</div>
+      <div class="sc-desc">Weekly industry mentoring. All university open. Education-first philosophy. 62% success rate</div>
+      <div class="sc-badge" style="background:var(--stanford);color:white">Mentorship &gt; money</div>
+      <div class="str-bar" style="background:var(--stanford)"></div>
+    </div>
+    <div class="stage-cell" style="background:#f0d8d8;border-color:#e0b8b8" title="SPARK helps projects to IND-enabling stage. Core lab facilities available. CMC knowledge through advisor network. Projects typically 2-year cycle with aim to license or begin clinical study by end.">
+      <div class="sc-title" style="color:var(--stanford)">IND-enabling + core labs</div>
+      <div class="sc-desc">2-year cycle. Core lab access. Aim: licensed or clinical study at graduation</div>
+      <div class="str-bar" style="background:var(--stanford);opacity:0.7"></div>
+    </div>
+    <div class="stage-cell" style="background:#f5e8e8;border-color:#e0c4c4" title="43/117 graduated projects licensed to startups, 13 to existing companies. SPARK connects to Silicon Valley VC ecosystem. Deshpande-adjacent networks. Company creation as key success metric.">
+      <div class="sc-title" style="color:var(--stanford)">43 startups from 117 projects</div>
+      <div class="sc-desc">43 licensed to startups, 13 to existing cos. Deep VC ecosystem access</div>
+      <div class="sc-badge" style="background:#8c1515;color:white">62% overall success rate</div>
+      <div class="str-bar" style="background:var(--stanford)"></div>
+    </div>
+    <div class="stage-cell" style="background:#e8c8c8;border-color:#d8a8a8" title="SPARK does not directly fund clinical trials — these require licensing to company or IIS grant. 17 projects in clinical trials from 117 graduated SPARK projects. Success measured by licensing or IIS commencement.">
+      <div class="sc-title" style="color:var(--stanford)">Handoff to IIS / company</div>
+      <div class="sc-desc">17/117 in trials. SPARK graduates to licence or IIS. Does not fund trials directly</div>
+      <div class="str-bar" style="background:var(--stanford);opacity:0.45"></div>
+    </div>
+    <div class="stage-cell empty">
+      <div class="sc-title">Out of scope</div>
+    </div>
+  </div>
+
+  <!-- MIT DESHPANDE -->
+
+  <div class="org-row">
+    <div class="org-label" style="background:var(--mit-light);border-left-color:var(--mit)">
+      <div class="org-label-name" style="color:var(--mit)">MIT Deshpande Center</div>
+      <div class="org-label-sub">USA · $21M+ awarded · 200+ projects · 55+ spin-outs</div>
+    </div>
+    <div class="stage-cell" style="background:#fae8eb;border-color:#e8c0c8" title="MIT engineering + biology + computational sciences. 'Ignition Grants' up to $50K for early PoC. Any MIT faculty PI can apply. No disease/technology restriction. Breadth is a feature.">
+      <div class="sc-title" style="color:var(--mit)">Ignition Grants · any technology</div>
+      <div class="sc-desc">$50K Ignition for PoC. All MIT faculty eligible. Tech-agnostic breadth by design</div>
+      <div class="str-bar" style="background:var(--mit);opacity:0.7"></div>
+    </div>
+    <div class="stage-cell" style="background:#fae8eb;border-color:#e8c0c8" title="DEFINING MODEL: Reduce market uncertainty, not just technical risk. Objective: make technology attractive for external investment. $100K-$250K Innovation Grants for near-commercialisation technologies. VC + entrepreneur mentors as 'Catalysts'. Market discovery + customer validation as explicit milestone.">
+      <div class="sc-title" style="color:var(--mit)">Market uncertainty reduction focus</div>
+      <div class="sc-desc">Goal: make tech investable. Catalysts (VC mentors). Customer discovery milestone. $250K max</div>
+      <div class="sc-badge" style="background:var(--mit);color:white">$2B+ external capital raised</div>
+      <div class="str-bar" style="background:var(--mit)"></div>
+    </div>
+    <div class="stage-cell" style="background:#f8d8dc;border-color:#e8b8c0" title="Innovation Grants ($50K–$250K) push to commercialisation-ready stage within ~1 year. MIT HEALS Momentum Grants ($125K, health/life sciences focus). Deshpande + HEALS health-specific track new in 2025.">
+      <div class="sc-title" style="color:var(--mit)">Innovation Grants + HEALS</div>
+      <div class="sc-desc">$125K Momentum Grants (health). 1-year commercialisation readiness. Catalysts guidance</div>
+      <div class="str-bar" style="background:var(--mit);opacity:0.65"></div>
+    </div>
+    <div class="stage-cell" style="background:#fae8eb;border-color:#e8c0c8" title="55+ spin-outs collectively raising >$2B in external financing. NSF I-Corps programme was inspired by Deshpande model. Deep VC and entrepreneur network in Boston/Cambridge ecosystem.">
+      <div class="sc-title" style="color:var(--mit)">55+ spin-outs · $2B raised</div>
+      <div class="sc-desc">Industry-academic catalysts. NSF I-Corps inspired by Deshpande. Boston VC ecosystem</div>
+      <div class="str-bar" style="background:var(--mit)"></div>
+    </div>
+    <div class="stage-cell empty">
+      <div class="sc-title">Out of scope</div>
+    </div>
+    <div class="stage-cell empty">
+      <div class="sc-title">Out of scope</div>
+    </div>
+  </div>
+
+  <!-- MRC -->
+
+  <div class="org-row">
+    <div class="org-label" style="background:var(--mrc-light);border-left-color:var(--mrc)">
+      <div class="org-label-name" style="color:var(--mrc)">Medical Research Council</div>
+      <div class="org-label-sub">UK · UKRI · ~£900M/yr total · Disease-agnostic</div>
+    </div>
+    <div class="stage-cell" style="background:#e0f4f7;border-color:#9edce6" title="MRC is the UK's primary public funder of biomedical and health research. Research boards (molecular & cellular medicine, neurosciences, infection & immunity, population & systems medicine) fund fundamental discovery across all health areas. Strong investment in genomics, single-cell biology, structural biology.">
+      <div class="sc-title" style="color:var(--mrc)">Broad discovery funding</div>
+      <div class="sc-desc">Research boards across all health areas. Genomics, structural biology, systems medicine. Disease-agnostic</div>
+      <div class="str-bar" style="background:var(--mrc)"></div>
+    </div>
+    <div class="stage-cell" style="background:#e0f4f7;border-color:#9edce6" title="Impact Acceleration Accounts (IAA): £100k–£750k/yr per institution, locally administered, flexible. Funds proof-of-concept, feasibility, industry partnerships, training. 43 institutions funded. 2000+ projects since 2012, £164M invested. CiC (Confidence in Concept) predecessor generated 1533 projects, £930M follow-on, 191 patents, 81 spin-outs.">
+      <div class="sc-title" style="color:var(--mrc)">IAA — flexible institutional fund</div>
+      <div class="sc-desc">£100k–£750k/yr per institution. Locally administered. 43 institutions, 2000+ projects, £164M invested</div>
+      <div class="sc-badge" style="background:var(--mrc);color:white">£930M follow-on from CiC</div>
+      <div class="str-bar" style="background:var(--mrc)"></div>
+    </div>
+    <div class="stage-cell" style="background:#e0f4f7;border-color:#9edce6" title="DPFS (Developmental Pathway Funding Scheme): MRC's core translational scheme. Prototype discovery → pre-clinical → Phase 2a. No funding cap, milestone-driven, three funding rounds/year. Supports therapeutics, diagnostics, devices, repurposing. DPFS + IAA spin-outs secured £5.7B equity since 2008 — 34% of all UK pharma/biotech spin-out capital 2008–2023.">
+      <div class="sc-title" style="color:var(--mrc)">DPFS — prototype to Phase 2a</div>
+      <div class="sc-desc">No funding cap. Milestone-driven. Therapies + diagnostics + devices + repurposing. 3 rounds/yr</div>
+      <div class="sc-badge" style="background:#005f3e;color:white">£5.30 external per £1 invested</div>
+      <div class="str-bar" style="background:var(--mrc)"></div>
+    </div>
+    <div class="stage-cell" style="background:#e0f4f7;border-color:#9edce6" title="206 MRC spin-outs (2008–2023) raised £5.7B equity. Translationally-targeted spin-outs leverage £5.30 external for every £1 MRC invested. Companies account for ~34% of all UK pharma/biotech spin-out capital. IAA explicitly funds industry partnerships and company formation. Developmental Pathway Gap Fund supports single high-risk translational steps.">
+      <div class="sc-title" style="color:var(--mrc)">206 spin-outs · £5.7B raised</div>
+      <div class="sc-desc">34% of UK pharma/biotech spin-out capital 2008–2023. £5.30 leverage per £1. Gap Fund for single steps</div>
+      <div class="sc-badge" style="background:var(--mrc);color:white">Largest UK public trans. funder</div>
+      <div class="str-bar" style="background:var(--mrc)"></div>
+    </div>
+    <div class="stage-cell" style="background:#c8ecf2;border-color:#80ccd8" title="Experimental Medicine Panel: interventional studies in humans based on pathophysiology gaps. Supports FIH mechanistic studies, biomarker validation, novel therapeutic/diagnostic approaches. EME programme supports late-stage clinical evaluation. MRC works in partnership with NIHR for Phase 2b/3 handoff.">
+      <div class="sc-title" style="color:var(--mrc)">Experimental Medicine + EME</div>
+      <div class="sc-desc">Interventional human studies. Mechanistic FIH. EME: late-stage clinical eval. NIHR handoff at Phase 2b</div>
+      <div class="str-bar" style="background:var(--mrc);opacity:0.8"></div>
+    </div>
+    <div class="stage-cell" style="background:#b8e4ec;border-color:#70bcc8" title="MRC explicitly stops at Phase 2a. NIHR partnership provides handoff for Phase 2b/3 trials. Biomedical Catalyst (with Innovate UK) bridges academic-industry. MRC does not fund Phase 3 or regulatory submissions — these are handed to NIHR or industry.">
+      <div class="sc-title" style="color:var(--mrc)">NIHR handoff (Phase 2b+)</div>
+      <div class="sc-desc">Explicit Phase 2a ceiling. NIHR partnership for later trials. Biomedical Catalyst with Innovate UK</div>
+      <div class="str-bar" style="background:var(--mrc);opacity:0.6"></div>
+    </div>
+  </div>
+
+  <!-- CRUK/CRH -->
+
+  <div class="org-row" style="opacity:0.88">
+    <div class="org-label" style="background:var(--cruk-light);border-left-color:var(--cruk)">
+      <div class="org-label-name" style="color:var(--cruk)">CRUK / CRH (current)</div>
+      <div class="org-label-sub">UK · ~£400M/yr · Cancer-specific</div>
+    </div>
+    <div class="stage-cell" style="background:#eae9f0;border-color:#c8c6da" title="Strong basic research funding via DRC, EDDRC, PPRC, RCC, CRC. Institutes and Centres add infrastructure. ~4000 researchers. However, translational outputs not systematically monitored from grant funding.">
+      <div class="sc-title" style="color:var(--cruk)">Strong grant portfolio</div>
+      <div class="sc-desc">DRC, EDDRC, PPRC, 4000+ researchers. But outputs not systematically tracked</div>
+      <div class="str-bar" style="background:var(--cruk);opacity:0.7"></div>
+    </div>
+    <div class="stage-cell" style="background:#dcd8ec;border-color:#b8b4d0" title="EVF/TF: broad remit, fast deployment, £250K cap. Therapeutic Catalyst: target validation, any modality, £250K. S&E patent support. However: IP stake required, year-end budget pressure, limited external expert governance on EVF/TF, ad-hoc CRH-grants coordination.">
+      <div class="sc-title" style="color:var(--cruk)">EVF/TF + Therapeutic Catalyst</div>
+      <div class="sc-desc">£250K cap. IP stake required. Year-end budget pressure. Limited external governance</div>
+      <div class="sc-badge" style="background:#e53935;color:white">⚠ Fragmented vs. competitors</div>
+      <div class="str-bar" style="background:var(--cruk);opacity:0.5"></div>
+    </div>
+    <div class="stage-cell" style="background:#ccc8e0;border-color:#a8a4c0" title="TI: small molecules and antibodies only. No ATIMP, no advanced therapeutics, no repurposing support beyond early PoC. C-Further handles paediatrics (all modalities). Significant gap vs. Oncode Accelerator coverage.">
+      <div class="sc-title" style="color:var(--cruk)">TI (limited modalities)</div>
+      <div class="sc-desc">Small molecules + antibodies only. No ATIMP support. No repurposing route</div>
+      <div class="sc-badge" style="background:#e53935;color:white">⚠ ATIMPs unsupported</div>
+      <div class="str-bar" style="background:var(--cruk);opacity:0.4"></div>
+    </div>
+    <div class="stage-cell" style="background:#dcd8ec;border-color:#b8b4d0" title="CRH Ventures Seed Funding + CGC provide spin-out support and investment. C-Further (co-founded with LifeArc). Good but smaller scale than LifeArc Ventures portfolio. Entrepreneurial training offered.">
+      <div class="sc-title" style="color:var(--cruk)">CRH Ventures + CGC</div>
+      <div class="sc-desc">Seed investment + company building. C-Further model strong. Entrepreneurial training</div>
+      <div class="str-bar" style="background:var(--cruk);opacity:0.6"></div>
+    </div>
+    <div class="stage-cell" style="background:#dcd8ec;border-color:#b8b4d0" title="CDD provides early phase trial sponsorship for biotech companies. ECMCs provide infrastructure. CRC supports cancer research including trials. However CDD restricted to biotech companies with sufficient preclinical funding — academics cannot access directly.">
+      <div class="sc-title" style="color:var(--cruk)">CDD + ECMCs</div>
+      <div class="sc-desc">CDD: biotech only. ECMCs good infrastructure. Academics can't access CDD directly</div>
+      <div class="str-bar" style="background:var(--cruk);opacity:0.55"></div>
+    </div>
+    <div class="stage-cell" style="background:#bcb8d4;border-color:#9890b8" title="MAJOR GAP: No affordable regulated facility access for IVD/MDR work. £250K TF ceiling too low for commercial CRO regulatory outsourcing. No biomarker test support outside early detection. Diagnostics development framework project just starting.">
+      <div class="sc-title" style="color:var(--cruk)">Significant gap</div>
+      <div class="sc-desc">No regulated facility access. TF cap too low for reg work. Diagnostics framework in progress</div>
+      <div class="sc-badge" style="background:#e53935;color:white">⚠ Critical gap</div>
+      <div class="str-bar" style="background:#e53935;opacity:0.6"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ ORG PROFILES ══ -->
+
+<div class="profiles-section">
+  <h2>Organisation Deep Profiles</h2>
+  <p class="section-intro">Key model features, what makes each organisation distinctive, and their standout innovations in translational infrastructure.</p>
+  <div class="profiles-grid">
+
+```
+<!-- ONCODE -->
+<div class="profile-card">
+  <div class="pc-header">
+    <div class="pc-icon" style="background:var(--oncode)">OI</div>
+    <div>
+      <div class="pc-name">Oncode Institute</div>
+      <div class="pc-country">Netherlands · Founded 2017</div>
+    </div>
+  </div>
+  <div class="pc-body">
+    <div class="pc-stat-row">
+      <div class="pc-stat"><strong>900+</strong>Researchers</div>
+      <div class="pc-stat"><strong>13</strong>Partner institutes</div>
+      <div class="pc-stat"><strong>12+</strong>Spin-offs</div>
+      <div class="pc-stat"><strong>€14</strong>External per €1 invested</div>
+    </div>
+    <div class="pc-section-title">What makes it distinctive</div>
+    <div class="pc-text">The Oncode model is built on a single non-negotiable insight: <strong>valorisation must be built into the institution from the start, not bolted on.</strong> Every investigator (OI) has a dedicated BD professional (1 per 15 OIs). TechDev Fund fills the gap between what TTOs can do and what's needed. The Accelerator programme addresses preclinical infrastructure at national scale with patient cohorts, organoids and AI as shared platforms — not just funding.</div>
+    <div class="pc-section-title">Standout innovations</div>
+    <div class="pc-text">Oncode-PACT for downstream development. CPoC (Clinical Proof-of-Concept) programme — funded, expert-supported clinical studies with investigators. Bridge Fund pre-seed instrument. €325M Oncode Accelerator: cell & gene therapy infrastructure alongside small molecules + biologics.</div>
+    <div class="pc-pills">
+      <span class="pc-pill pill-green">Valorisation-native</span>
+      <span class="pc-pill pill-green">Cell/gene coverage ✓</span>
+      <span class="pc-pill pill-green">14× leverage</span>
+      <span class="pc-pill pill-blue">Public-private model</span>
+      <span class="pc-pill pill-amber">20% patents licensed (target: 40%)</span>
+    </div>
+  </div>
+</div>
+
+<!-- WELLCOME -->
+<div class="profile-card">
+  <div class="pc-header">
+    <div class="pc-icon" style="background:var(--wellcome)">W</div>
+    <div>
+      <div class="pc-name">Wellcome Trust / Leap</div>
+      <div class="pc-country">UK / USA · £37.6B endowment</div>
+    </div>
+  </div>
+  <div class="pc-body">
+    <div class="pc-stat-row">
+      <div class="pc-stat"><strong>£1.1B</strong>Annual spend</div>
+      <div class="pc-stat"><strong>10</strong>Leap programmes</div>
+      <div class="pc-stat"><strong>£37.6B</strong>Endowment</div>
+    </div>
+    <div class="pc-section-title">What makes it distinctive</div>
+    <div class="pc-text">Scale and independence give Wellcome the freedom to fund <strong>unglamorous but critical infrastructure</strong> — the Sanger Institute, data commons, open access publishing. Wellcome Leap is a genuinely radical model: DARPA for health. Non-linear R&D, failure as a feature, no central facility, contracts in days. The Translation Fund (historically) was willing to fund up to $8.9M per project with Wellcome taking active IP stewardship — more like a partner than a funder.</div>
+    <div class="pc-section-title">Standout innovations</div>
+    <div class="pc-text">Wellcome Leap's speed (days to contract vs months). The ISSF mechanism that distributes autonomy to universities with ring-fenced translational budgets. Syncona as a spin-out investment vehicle. Open Science Prize and data commons funding that creates public goods others free-ride on.</div>
+    <div class="pc-pills">
+      <span class="pc-pill pill-green">Scale ✓</span>
+      <span class="pc-pill pill-green">Wellcome Leap model ✓</span>
+      <span class="pc-pill pill-blue">IP stewardship active</span>
+      <span class="pc-pill pill-amber">Translation Fund now closed</span>
+      <span class="pc-pill pill-amber">Less systematic at reg stage</span>
+    </div>
+  </div>
+</div>
+
+<!-- LIFEARC -->
+<div class="profile-card">
+  <div class="pc-header">
+    <div class="pc-icon" style="background:var(--lifearc)">LA</div>
+    <div>
+      <div class="pc-name">LifeArc</div>
+      <div class="pc-country">UK · £1.3B committed by 2030</div>
+    </div>
+  </div>
+  <div class="pc-body">
+    <div class="pc-stat-row">
+      <div class="pc-stat"><strong>5</strong>Licensed medicines</div>
+      <div class="pc-stat"><strong>17</strong>Venture portfolio cos</div>
+      <div class="pc-stat"><strong>25+</strong>Years translating</div>
+      <div class="pc-stat"><strong>£1.3B</strong>By 2030</div>
+    </div>
+    <div class="pc-section-title">What makes it distinctive</div>
+    <div class="pc-text">LifeArc is the closest comparator to what CRH aspires to be — but operating at a <strong>higher level of integration and strategic coherence</strong>. Translational Challenges approach: identify disease areas where good science exists but translational infrastructure is missing, then build that infrastructure deliberately. Regulatory expertise and IP management are internal capabilities, not advisory services — they are the product. Pembrolizumab (Keytruda) is a remarkable proof point: a £multi-billion medicine that grew from academic IP.</div>
+    <div class="pc-section-title">Standout innovations</div>
+    <div class="pc-text">PACE programme (£30M, £5M rounds, public-private AMR). TDF (Translational Development Fund) with wraparound support standardised — not optional. LifeArc Ventures dual-mandate approach (returns fund charity). Self-funded charity model from Keytruda royalties — financial sustainability is a strategic lesson.</div>
+    <div class="pc-pills">
+      <span class="pc-pill pill-green">Reg capability internal ✓</span>
+      <span class="pc-pill pill-green">5 marketed medicines ✓</span>
+      <span class="pc-pill pill-green">Self-sustaining model ✓</span>
+      <span class="pc-pill pill-blue">Translational Challenges model</span>
+      <span class="pc-pill pill-blue">Wraparound standard</span>
+    </div>
+  </div>
+</div>
+
+<!-- STANFORD SPARK -->
+<div class="profile-card">
+  <div class="pc-header">
+    <div class="pc-icon" style="background:var(--stanford)">SP</div>
+    <div>
+      <div class="pc-name">Stanford SPARK</div>
+      <div class="pc-country">USA · Founded 2006 · 60+ global affiliates</div>
+    </div>
+  </div>
+  <div class="pc-body">
+    <div class="pc-stat-row">
+      <div class="pc-stat"><strong>62%</strong>Success rate</div>
+      <div class="pc-stat"><strong>43</strong>Licensed to startups</div>
+      <div class="pc-stat"><strong>17</strong>In clinical trials</div>
+      <div class="pc-stat"><strong>$50K</strong>Per project/yr</div>
+    </div>
+    <div class="pc-section-title">What makes it distinctive</div>
+    <div class="pc-text">SPARK's most important insight is <strong>that money is not the primary constraint — knowledge and networks are.</strong> $50K/yr per project is almost deliberately small. The real value is 100+ volunteer industry experts providing weekly coaching, all open to any university member. Education as mechanism, not just output. Rigorous selection from TLO disclosures means projects are commercially relevant from day one. 62% success rate is exceptional at this TRL.</div>
+    <div class="pc-section-title">Standout innovations</div>
+    <div class="pc-text">The Wednesday model: lectures + updates, anyone can attend. Scholars as community, not just recipients. SPARK Global: 60+ institutions in 23 countries adopted the model — proof that IP is a playbook, not a secret. Child/maternal health and orphan disease focus as deliberate strategy to tackle underserved areas.</div>
+    <div class="pc-pills">
+      <span class="pc-pill pill-green">62% success rate ✓</span>
+      <span class="pc-pill pill-green">100+ industry volunteers ✓</span>
+      <span class="pc-pill pill-blue">Education-first model</span>
+      <span class="pc-pill pill-blue">60+ global affiliates</span>
+      <span class="pc-pill pill-amber">Small funding per project</span>
+      <span class="pc-pill pill-red">No direct clinical trial funding</span>
+    </div>
+  </div>
+</div>
+
+<!-- MIT DESHPANDE -->
+<div class="profile-card">
+  <div class="pc-header">
+    <div class="pc-icon" style="background:var(--mit)">MD</div>
+    <div>
+      <div class="pc-name">MIT Deshpande Center</div>
+      <div class="pc-country">USA · Founded 2002 · $21M+ in grants</div>
+    </div>
+  </div>
+  <div class="pc-body">
+    <div class="pc-stat-row">
+      <div class="pc-stat"><strong>200+</strong>Projects funded</div>
+      <div class="pc-stat"><strong>55+</strong>Spin-outs</div>
+      <div class="pc-stat"><strong>$2B+</strong>External capital</div>
+      <div class="pc-stat"><strong>$250K</strong>Max grant</div>
+    </div>
+    <div class="pc-section-title">What makes it distinctive</div>
+    <div class="pc-text">Deshpande's core framing is unique: the goal is <strong>not to de-risk technically, but to reduce market uncertainty</strong>. The explicit objective of every grant is to make the technology attractive to an external party. VC-entrepreneur 'Catalysts' are embedded, not advisory. Customer discovery and market validation are <em>required milestones</em>, not nice-to-haves. The NSF I-Corps programme that transformed US academic commercialisation was directly inspired by the Deshpande model.</div>
+    <div class="pc-section-title">Standout innovations</div>
+    <div class="pc-text">Ignition + Innovation two-stage grants (idea → commercial readiness). Catalysts programme (embedded VC mentors). MIT HEALS Momentum Grants (new health-specific track, $125K). MIT-Pillar AI Collective partnership model — combining university grants with VC network building simultaneously.</div>
+    <div class="pc-pills">
+      <span class="pc-pill pill-green">Market uncertainty focus ✓</span>
+      <span class="pc-pill pill-green">$2B+ capital leveraged ✓</span>
+      <span class="pc-pill pill-blue">VC Catalysts embedded</span>
+      <span class="pc-pill pill-blue">Inspired NSF I-Corps</span>
+      <span class="pc-pill pill-red">Early stage only</span>
+      <span class="pc-pill pill-red">No clinical or reg</span>
+    </div>
+  </div>
+</div>
+
+<!-- MRC -->
+<div class="profile-card">
+  <div class="pc-header">
+    <div class="pc-icon" style="background:var(--mrc)">MRC</div>
+    <div>
+      <div class="pc-name">Medical Research Council</div>
+      <div class="pc-country">UK · UKRI · Founded 1913 · Disease-agnostic</div>
+    </div>
+  </div>
+  <div class="pc-body">
+    <div class="pc-stat-row">
+      <div class="pc-stat"><strong>206</strong>Spin-outs (2008–23)</div>
+      <div class="pc-stat"><strong>£5.7B</strong>Equity raised</div>
+      <div class="pc-stat"><strong>£164M</strong>IAA invested</div>
+      <div class="pc-stat"><strong>£5.30</strong>External per £1</div>
+    </div>
+    <div class="pc-section-title">What makes it distinctive</div>
+    <div class="pc-text">The MRC's translational model rests on a deliberately staged handoff architecture: IAA unlocks early PoC, DPFS funds prototype-to-Phase-2a with no funding cap, and NIHR picks up the clinical baton at Phase 2b. This explicit division of labour — each instrument doing what it does best — is the core design insight. The IAA is particularly elegant: ring-fenced money devolved to institutions, locally administered, flexible by design, with industry partnership embedded as a core objective rather than an afterthought. The result is 206 spin-outs that collectively represent 34% of all UK pharma/biotech spin-out capital raised between 2008 and 2023.</div>
+    <div class="pc-section-title">Standout innovations</div>
+    <div class="pc-text">The DPFS milestone-driven structure with no artificial funding cap — projects funded on merit and need, not a ceiling. The IAA devolution model: institutions decide, not a central committee. The Biomedical Catalyst public-private programme with Innovate UK. The Developmental Pathway Gap Fund for single high-risk steps. Experimental Medicine panel as a mechanism to generate human mechanistic data before committing to full development programmes.</div>
+    <div class="pc-pills">
+      <span class="pc-pill pill-green">No DPFS funding cap ✓</span>
+      <span class="pc-pill pill-green">£5.30× leverage ✓</span>
+      <span class="pc-pill pill-green">34% UK spin-out capital ✓</span>
+      <span class="pc-pill pill-blue">IAA devolution model</span>
+      <span class="pc-pill pill-blue">NIHR handoff partnership</span>
+      <span class="pc-pill pill-amber">Phase 2a ceiling — regulatory gap</span>
+      <span class="pc-pill pill-red">No venture / equity arm</span>
+    </div>
+  </div>
+</div>
+
+<!-- CRUK SUMMARY -->
+<div class="profile-card" style="border-color:#9890b8">
+  <div class="pc-header">
+    <div class="pc-icon" style="background:var(--cruk)">CRH</div>
+    <div>
+      <div class="pc-name">CRUK / Cancer Research Horizons</div>
+      <div class="pc-country">UK · £400M/yr · World's largest cancer funder</div>
+    </div>
+  </div>
+  <div class="pc-body">
+    <div class="pc-stat-row">
+      <div class="pc-stat"><strong>4,000+</strong>Researchers</div>
+      <div class="pc-stat"><strong>£400M</strong>Annual spend</div>
+      <div class="pc-stat"><strong>£250K</strong>TF / Catalyst cap</div>
+    </div>
+    <div class="pc-section-title">Current strengths</div>
+    <div class="pc-text">Extraordinary research base. TI provides genuine drug discovery capability (small molecules/antibodies). CDD provides FIH sponsorship. C-Further is a best-in-class model for paediatric oncology. CRH Ventures + CGC growing. EDDRC focused and impactful.</div>
+    <div class="pc-section-title">Where the system underperforms vs. peers</div>
+    <div class="pc-text">No systematic valorisation link between grants and CRH. ATIMPs and advanced therapeutics have no route. £250K cap too low for regulatory stage work. No affordable regulated facility for diagnostics/IVD. Funding mechanisms operate independently, not as a coherent pipeline. Translational outputs not tracked across the portfolio.</div>
+    <div class="pc-pills">
+      <span class="pc-pill pill-green">Research base ✓</span>
+      <span class="pc-pill pill-green">C-Further model ✓</span>
+      <span class="pc-pill pill-red">No ATIMP route ✗</span>
+      <span class="pc-pill pill-red">No reg facility ✗</span>
+      <span class="pc-pill pill-amber">Fragmented mechanisms</span>
+      <span class="pc-pill pill-amber">No output tracking</span>
+    </div>
+  </div>
+</div>
+```
+
+  </div>
+</div>
+
+<!-- ══ WHAT CRUK COULD LEARN ══ -->
+
+<div class="lessons-section">
+  <h2>Eleven Learnable Lessons for CRUK / CRH</h2>
+  <p class="section-intro">Concrete, actionable practices drawn from the benchmarking — each with a specific mechanism and an estimated impact on the translational pipeline.</p>
+  <div class="lessons-grid">
+
+```
+<div class="lesson-card" style="border-left-color:var(--oncode)">
+  <div class="lc-header">
+    <span class="lc-from" style="background:var(--oncode)">From Oncode</span>
+    <div class="lc-title">Build Valorisation Into Grants, Not After</div>
+  </div>
+  <div class="lc-body">Oncode assigns a BD professional to every 15 investigators — not as a service function, but as a proactive partner who attends lab meetings, identifies IP before publication, and shapes research direction toward commercial utility. CRUK's current S&E team engages ad hoc, after an application arrives. The Oncode model means no project falls through because nobody spotted it.</div>
+  <div class="lc-impact"><strong>For CRUK:</strong> assign a CRH S&E/BD lead to each major funding committee with a mandate to attend meetings, flag translational potential in real time, and fast-track EVF applications for at-risk discoveries. Estimate: 2–3× increase in TF pipeline from existing grant portfolio.</div>
+</div>
+
+<div class="lesson-card" style="border-left-color:var(--lifearc)">
+  <div class="lc-header">
+    <span class="lc-from" style="background:var(--lifearc)">From LifeArc</span>
+    <div class="lc-title">Wraparound Support Must Be Standard, Not Optional</div>
+  </div>
+  <div class="lc-body">Every PACE awardee at LifeArc gets: strategic support to define the right translational pathway, guidance on data packages, help defining target product profiles, and facilitated regulator engagement. This is not a menu — it is the programme. CRUK's EVF/TF provides money but leaves researchers to navigate regulatory, commercial and clinical pathways largely alone.</div>
+  <div class="lc-impact"><strong>For CRUK:</strong> standardise a "translational support package" for all TF awards over £50K: mandatory TPP definition session, regulatory pathway scoping, and one commercial/VC introduction. The cost per award is negligible; the impact on success rates would be significant.</div>
+</div>
+
+<div class="lesson-card" style="border-left-color:var(--stanford)">
+  <div class="lc-header">
+    <span class="lc-from" style="background:var(--stanford)">From Stanford SPARK</span>
+    <div class="lc-title">Industry Mentorship Is More Valuable Than Money</div>
+  </div>
+  <div class="lc-body">SPARK achieves a 62% success rate with $50K/yr per project because 100+ volunteer industry experts provide weekly coaching. The knowledge transfer — how to define a development candidate, what an IND requires, what a VC needs to see — is worth more than the funding. CRUK has an extraordinary researcher network but the expert knowledge of CRH/TI is siloed from grant-stage investigators.</div>
+  <div class="lc-impact"><strong>For CRUK:</strong> launch a "Translational Scholar" programme modelled on SPARK: selected early-stage projects receive ~£40K + mandatory biweekly coaching from CRH scientific, BD and regulatory staff, plus 2 external industry advisors. Open Wednesday-style sessions to all CRUK researchers, not just awardees.</div>
+</div>
+
+<div class="lesson-card" style="border-left-color:var(--mit)">
+  <div class="lc-header">
+    <span class="lc-from" style="background:var(--mit)">From MIT Deshpande</span>
+    <div class="lc-title">Define Success as Market Readiness, Not Scientific Outputs</div>
+  </div>
+  <div class="lc-body">Every Deshpande grant has an explicit milestone: the technology must be sufficiently de-risked that an external party would invest. This reframes the review process away from "is this good science?" toward "is this investable?". CRUK's grant committees are optimised for scientific excellence; commercial viability is a secondary consideration that tends to get assessed only at the TF stage.</div>
+  <div class="lc-impact"><strong>For CRUK:</strong> add a standard "translational potential" scoring criterion (weighted 15–20%) to all CRH TF and Therapeutic Catalyst review processes, and include at least one external commercial expert in every review panel. Require applicants to define a target product profile and preliminary commercial landscape.</div>
+</div>
+
+<div class="lesson-card" style="border-left-color:var(--oncode)">
+  <div class="lc-header">
+    <span class="lc-from" style="background:var(--oncode)">From Oncode Accelerator</span>
+    <div class="lc-title">Build Shared Infrastructure for ATIMPs and Advanced Therapeutics</div>
+  </div>
+  <div class="lc-body">Oncode Accelerator invested €325M to build shared national preclinical infrastructure for all four therapy types: small molecules, biologics, cell & gene therapies, and vaccines. Clean rooms, organoid platforms, patient cohorts, and AI are shared across 35+ partners. CRUK/TI currently has no route for ATIMP projects from its own portfolio — they fall out of the system entirely after Therapeutic Catalyst.</div>
+  <div class="lc-impact"><strong>For CRUK:</strong> partner with UKRI/Innovate UK or NHS England to co-fund a shared UK oncology ATIMP translational facility — even at modest scale initially (2–3 cell therapy and vaccine programmes). Use Oncode Accelerator's existing NL-UK collaboration as the bridgehead — the December 2024 alliance is the starting point.</div>
+</div>
+
+<div class="lesson-card" style="border-left-color:var(--lifearc)">
+  <div class="lc-header">
+    <span class="lc-from" style="background:var(--lifearc)">From LifeArc + Oncode</span>
+    <div class="lc-title">Raise the Funding Ceiling for Regulatory-Stage Work</div>
+  </div>
+  <div class="lc-body">LifeArc's PACE programme funds up to £5M per round for diagnostic-stage projects. Oncode's TechDev fund specifically fills the gap that TTOs can't reach. CRUK's £250K TF cap is explicitly insufficient for regulated facility work — a commercially outsourced biomarker regulatory programme costs £500K–£2M. This is the single most actionable structural fix in the translational system.</div>
+  <div class="lc-impact"><strong>For CRUK:</strong> create a "Regulation & Productisation Fund" (RPF) of £500K–£2M per award, specifically for IVD/MDR regulatory activities. Ring-fence £10–20M/yr for this instrument. This single change would address the most commonly cited failure mode for diagnostics projects in the WS2 report.</div>
+</div>
+
+<div class="lesson-card" style="border-left-color:var(--wellcome)">
+  <div class="lc-header">
+    <span class="lc-from" style="background:var(--wellcome)">From Wellcome Leap</span>
+    <div class="lc-title">Create a Non-Linear, High-Risk Innovation Track</div>
+  </div>
+  <div class="lc-body">Wellcome Leap's model is deliberately different from everything else Wellcome does: no central facility, non-linear R&D (discovery and development simultaneously), contracts in days, and failure treated as valuable data. It exists because the standard grant + translation fund pipeline is too slow for some of the most important health challenges. CRUK currently has no equivalent high-velocity, high-risk track.</div>
+  <div class="lc-impact"><strong>For CRUK:</strong> establish a small "Cancer Leap" programme — 3–5 ambitious challenges (e.g., liquid biopsy for 5 solid tumours in 3 years; universal T-cell therapy manufacturing platform) with milestone-based funding of £1–5M and deliberately non-standard governance. This would be visible externally and attract top talent who can't work within standard grant timelines.</div>
+</div>
+
+<div class="lesson-card" style="border-left-color:var(--mit)">
+  <div class="lc-header">
+    <span class="lc-from" style="background:var(--mit)">From Deshpande + Oncode</span>
+    <div class="lc-title">Track, Measure and Publish Translational Outputs</div>
+  </div>
+  <div class="lc-body">Oncode reports €1 → €14 external capital leverage. SPARK reports 62% success rate across 117 graduated projects. MIT Deshpande tracks $2B+ external capital from 55+ spin-outs. LifeArc has 5 licensed medicines as a headline metric. CRUK's grant portfolio is not systematically monitored for translational milestones — making it impossible to know what is and isn't working, and impossible to make the case for increased translational investment.</div>
+  <div class="lc-impact"><strong>For CRUK:</strong> implement a lightweight annual "translational census" across all CRUK-funded researchers: spin-outs formed, patents filed, licences signed, EVF/TF applications generated, industry collaborations initiated. Publish this externally. It will accelerate culture change, surface hidden successes, and make the WS2 gap analysis much more precise in future cycles.</div>
+</div>
+
+<div class="lesson-card" style="border-left-color:var(--mrc)">
+  <div class="lc-header">
+    <span class="lc-from" style="background:var(--mrc)">From MRC</span>
+    <div class="lc-title">Remove the Funding Ceiling — Fund by Merit, Not by Cap</div>
+  </div>
+  <div class="lc-body">The DPFS has no funding cap. Projects are assessed on scientific and commercial merit, milestone credibility, and value for money — not on whether they fit inside a pre-set budget envelope. CRUK's £250K TF cap is an arbitrary structural constraint that ensures the most ambitious, capital-intensive translational projects can never be supported, regardless of their quality. The MRC model also uses milestone-driven disbursement — money is released as projects hit agreed development milestones, which enforces discipline without starving good projects of the capital they need.</div>
+  <div class="lc-impact"><strong>For CRUK:</strong> restructure the TF into two tiers: a fast-track £250K instrument (current EVF/TF) for early de-risking, and a new milestone-gated Development Award of £250K–£2M for projects with a credible route to licensing or clinical entry. The Development Award should include quarterly milestone reviews with external expert input — mirroring the DPFS governance model.</div>
+</div>
+
+<div class="lesson-card" style="border-left-color:var(--mrc)">
+  <div class="lc-header">
+    <span class="lc-from" style="background:var(--mrc)">From MRC IAA</span>
+    <div class="lc-title">Devolve Translational Funding to Institutions, With Accountability</div>
+  </div>
+  <div class="lc-body">The MRC IAA awards £100K–£750K/yr directly to institutions, who administer their own portfolio of projects. The institution decides which projects get funded, at what scale and pace, responding to local opportunity in real time. This is radically more agile than a central committee reviewing applications on fixed cycles. CRUK's EVF/TF is centrally managed — creating bottlenecks, year-end budget pressure, and a one-size-fits-all review process that struggles with the diversity of translational projects. The IAA model produced 2000+ projects and £930M follow-on from a £164M investment base.</div>
+  <div class="lc-impact"><strong>For CRUK:</strong> pilot an IAA-equivalent mechanism for 3–5 CRUK Centres: an annual block grant of £100K–£300K, devolved to the Centre Director, for translational de-risking activities. Report annually on projects funded, outputs generated, and follow-on secured. If leverage ratios match MRC's, scale to all Centres within 3 years.</div>
+</div>
+
+<div class="lesson-card" style="border-left-color:var(--mrc)">
+  <div class="lc-header">
+    <span class="lc-from" style="background:var(--mrc)">From MRC + NIHR</span>
+    <div class="lc-title">Design Explicit Handoff Points Into the System Architecture</div>
+  </div>
+  <div class="lc-body">MRC's relationship with NIHR is not ad hoc — it is architecturally designed. MRC funds up to Phase 2a. NIHR funds Phase 2b and 3. The Biomedical Catalyst partnership with Innovate UK bridges to industry. Each body knows its lane. CRUK's system lacks equivalent clarity: TI, CRH, CDD, and ECMCs all operate with overlapping mandates and no defined handoff protocol. The result is that projects stall in the gap between them, or navigate the system through personal relationships rather than process.</div>
+  <div class="lc-impact"><strong>For CRUK:</strong> define and publish three explicit handoff protocols: (1) TF/Catalyst → TI entry criteria and process; (2) TI → CDD entry criteria and academic access route; (3) CRH → industry/VC introduction point. Each protocol should include named lead, decision criteria, and maximum decision timeline. This is a process change, not a funding ask.</div>
+</div>
+```
+
+<div class="coverage-section">
+  <h2>Capability Coverage Heatmap</h2>
+  <table class="cov-table">
+    <thead>
+      <tr>
+        <th class="row-label">Organisation</th>
+        <th>Discovery Funding</th>
+        <th>Trans. De-risking</th>
+        <th>Drug/Product Dev</th>
+        <th>Venture / Spin-out</th>
+        <th>Clinical Trials</th>
+        <th>Regulatory</th>
+        <th>ATIMP Coverage</th>
+        <th>Wraparound Support</th>
+        <th>Output Tracking</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="row-label" style="color:var(--oncode);font-family:'Syne',sans-serif">Oncode Institute</td>
+        <td class="cov-5">●●●●●</td>
+        <td class="cov-5">●●●●●</td>
+        <td class="cov-5">●●●●●</td>
+        <td class="cov-5">●●●●●</td>
+        <td class="cov-4">●●●●</td>
+        <td class="cov-3">●●●</td>
+        <td class="cov-5">●●●●●</td>
+        <td class="cov-5">●●●●●</td>
+        <td class="cov-5">●●●●●</td>
+      </tr>
+      <tr>
+        <td class="row-label" style="color:var(--wellcome);font-family:'Syne',sans-serif">Wellcome / Leap</td>
+        <td class="cov-5">●●●●●</td>
+        <td class="cov-4">●●●●</td>
+        <td class="cov-4">●●●●</td>
+        <td class="cov-3">●●●</td>
+        <td class="cov-4">●●●●</td>
+        <td class="cov-2">●●</td>
+        <td class="cov-4">●●●●</td>
+        <td class="cov-3">●●●</td>
+        <td class="cov-3">●●●</td>
+      </tr>
+      <tr>
+        <td class="row-label" style="color:var(--lifearc);font-family:'Syne',sans-serif">LifeArc</td>
+        <td class="cov-4">●●●●</td>
+        <td class="cov-5">●●●●●</td>
+        <td class="cov-5">●●●●●</td>
+        <td class="cov-5">●●●●●</td>
+        <td class="cov-4">●●●●</td>
+        <td class="cov-5">●●●●●</td>
+        <td class="cov-3">●●●</td>
+        <td class="cov-5">●●●●●</td>
+        <td class="cov-4">●●●●</td>
+      </tr>
+      <tr>
+        <td class="row-label" style="color:var(--stanford);font-family:'Syne',sans-serif">Stanford SPARK</td>
+        <td class="cov-4">●●●●</td>
+        <td class="cov-5">●●●●●</td>
+        <td class="cov-3">●●●</td>
+        <td class="cov-5">●●●●●</td>
+        <td class="cov-2">●●</td>
+        <td class="cov-1">—</td>
+        <td class="cov-3">●●●</td>
+        <td class="cov-5">●●●●●</td>
+        <td class="cov-5">●●●●●</td>
+      </tr>
+      <tr>
+        <td class="row-label" style="color:var(--mit);font-family:'Syne',sans-serif">MIT Deshpande</td>
+        <td class="cov-4">●●●●</td>
+        <td class="cov-4">●●●●</td>
+        <td class="cov-3">●●●</td>
+        <td class="cov-5">●●●●●</td>
+        <td class="cov-1">—</td>
+        <td class="cov-1">—</td>
+        <td class="cov-2">●●</td>
+        <td class="cov-4">●●●●</td>
+        <td class="cov-5">●●●●●</td>
+      </tr>
+      <tr>
+        <td class="row-label" style="color:var(--mrc);font-family:'Syne',sans-serif">MRC (UKRI)</td>
+        <td class="cov-5">●●●●●</td>
+        <td class="cov-5">●●●●●</td>
+        <td class="cov-5">●●●●●</td>
+        <td class="cov-4">●●●●</td>
+        <td class="cov-4">●●●●</td>
+        <td class="cov-2">●●</td>
+        <td class="cov-3">●●●</td>
+        <td class="cov-3">●●●</td>
+        <td class="cov-5">●●●●●</td>
+      </tr>
+      <tr>
+        <td class="row-label" style="color:var(--cruk);font-family:'Syne',sans-serif">CRUK / CRH (current)</td>
+        <td class="cov-5">●●●●●</td>
+        <td class="cov-3">●●●</td>
+        <td class="cov-3">●●●</td>
+        <td class="cov-3">●●●</td>
+        <td class="cov-3">●●●</td>
+        <td class="cov-1">—</td>
+        <td class="cov-1">—</td>
+        <td class="cov-2">●●</td>
+        <td class="cov-1">—</td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--muted);margin-top:10px;line-height:1.8">
+    ●●●●● Excellent coverage &nbsp;|&nbsp; ●●●● Strong &nbsp;|&nbsp; ●●● Moderate &nbsp;|&nbsp; ●● Limited / partial &nbsp;|&nbsp; — Not covered / major gap
+  </p>
+</div>
+
+</body>
+</html>
