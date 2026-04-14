@@ -1,1 +1,838 @@
-file:///C:/Users/Foulke01/OneDrive%20-%20Cancer%20Research%20UK/Downloads/translational_pathways_schematic%20(1).html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CRUK / CRH — Translational Research System Map</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap');
+
+:root {
+  --bg:      #f5f2ec;
+  --surface: #ffffff;
+  --border:  #e0dbd0;
+  --text:    #1a1a1a;
+  --muted:   #6b6560;
+
+  --tx:   #1d4ed8;
+  --at:   #6d28d9;
+  --dx:   #0f766e;
+  --dd:   #15803d;
+  --bt:   #a16207;
+
+  --tx-bg:#dbeafe; --tx-bd:#93c5fd; --tx-lt:#eff6ff;
+  --at-bg:#ede9fe; --at-bd:#a78bfa; --at-lt:#f5f3ff;
+  --dx-bg:#ccfbf1; --dx-bd:#5eead4; --dx-lt:#f0fdfa;
+  --dd-bg:#dcfce7; --dd-bd:#86efac; --dd-lt:#f0fdf4;
+  --bt-bg:#fef9c3; --bt-bd:#fde047; --bt-lt:#fefce8;
+
+  --gap-bg:#fee2e2; --gap-bd:#fca5a5; --gap:#dc2626;
+  --ok-bg:#d1fae5;  --ok-bd:#6ee7b7;  --ok:#065f46;
+  --partial-bg:#fef3c7; --partial-bd:#fcd34d; --partial:#92400e;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 12px;
+  line-height: 1.5;
+  min-width: 1260px;
+}
+
+header {
+  background: var(--text);
+  padding: 32px 48px 26px;
+  display: flex;
+  align-items: flex-end;
+  gap: 48px;
+}
+.h-eye {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  color: #888;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+header h1 {
+  font-family: 'Syne', sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.05;
+  letter-spacing: -0.4px;
+}
+header h1 em { color: #f0d060; font-style: normal; }
+.h-meta {
+  margin-left: auto;
+  text-align: right;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  color: #666;
+  line-height: 2;
+}
+
+.legend-bar {
+  background: var(--surface);
+  border-bottom: 2px solid var(--border);
+  padding: 11px 48px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.leg-group-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 8.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-right: 2px;
+}
+.leg { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--muted); white-space: nowrap; }
+.leg-sq { width: 11px; height: 11px; border-radius: 3px; flex-shrink: 0; border: 1px solid; }
+.leg-div { width: 1px; height: 14px; background: var(--border); margin: 0 4px; }
+
+.stage-header-wrap { padding: 12px 48px 4px; }
+.stage-header {
+  display: grid;
+  grid-template-columns: 176px repeat(6, 1fr);
+  gap: 3px;
+}
+.sh {
+  text-align: center;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 8.5px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  padding: 6px 4px;
+  border-radius: 5px;
+  font-weight: 500;
+  color: #fff;
+}
+.sh-a { background: #475569; }
+.sh-b { background: #3b4f63; }
+.sh-c { background: #1e3a5f; }
+.sh-d { background: #1e293b; }
+.sh-e { background: #0f172a; }
+
+.trl-row {
+  display: grid;
+  grid-template-columns: 176px repeat(6, 1fr);
+  gap: 3px;
+  padding: 3px 0 6px;
+}
+.trl-cell { text-align: center; font-family: 'IBM Plex Mono', monospace; font-size: 8px; color: #94a3b8; padding: 2px 0; }
+
+.pathways { padding: 0 48px 28px; }
+
+.pathway-group { margin-bottom: 18px; animation: fadeUp 0.35s ease both; }
+.pathway-group:nth-child(1){animation-delay:0.04s}
+.pathway-group:nth-child(2){animation-delay:0.1s}
+.pathway-group:nth-child(3){animation-delay:0.16s}
+.pathway-group:nth-child(4){animation-delay:0.22s}
+.pathway-group:nth-child(5){animation-delay:0.28s}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.group-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0 5px;
+  margin-bottom: 5px;
+  border-bottom: 1.5px solid var(--border);
+}
+.group-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+.group-name { font-family: 'Syne', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
+.group-sub { font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: var(--muted); margin-left: auto; }
+
+.prow {
+  display: grid;
+  grid-template-columns: 176px repeat(6, 1fr);
+  gap: 3px;
+  margin-bottom: 3px;
+}
+
+.row-label {
+  display: flex;
+  align-items: center;
+  padding: 7px 10px;
+  border-radius: 6px;
+  border-left: 3px solid;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--text);
+}
+.rl-tx { background: var(--tx-lt); border-left-color: var(--tx); }
+.rl-at { background: var(--at-lt); border-left-color: var(--at); }
+.rl-dx { background: var(--dx-lt); border-left-color: var(--dx); }
+.rl-dd { background: var(--dd-lt); border-left-color: var(--dd); }
+.rl-bt { background: var(--bt-lt); border-left-color: var(--bt); }
+
+.sc {
+  border-radius: 6px;
+  border: 1.5px solid transparent;
+  padding: 7px 9px;
+  min-height: 58px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+  transition: border-color 0.15s, transform 0.12s, box-shadow 0.15s;
+}
+.sc:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); z-index: 2; }
+.sc-title { font-family: 'Syne', sans-serif; font-size: 10px; font-weight: 700; line-height: 1.2; }
+.sc-sub   { font-size: 9px; line-height: 1.35; opacity: 0.8; }
+
+.fpill {
+  display: inline-block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 8px;
+  font-weight: 500;
+  padding: 1px 5px;
+  border-radius: 3px;
+  margin-top: 1px;
+  align-self: flex-start;
+  line-height: 1.4;
+  color: #fff;
+}
+
+.ibadge {
+  display: inline-block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 7.5px;
+  font-weight: 500;
+  padding: 1px 5px;
+  border-radius: 3px;
+  margin-top: 2px;
+  align-self: flex-start;
+  line-height: 1.4;
+  border: 1px solid;
+}
+.ib-ok      { background: var(--ok-bg);      color: var(--ok);      border-color: var(--ok-bd); }
+.ib-gap     { background: var(--gap-bg);     color: var(--gap);     border-color: var(--gap-bd); }
+.ib-partial { background: var(--partial-bg); color: var(--partial); border-color: var(--partial-bd); }
+.ib-scale   { background: #fef3c7; color: #92400e; border-color: #fcd34d; }
+
+.sc-gap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(-45deg, transparent, transparent 5px, rgba(220,38,38,0.1) 5px, rgba(220,38,38,0.1) 10px);
+  pointer-events: none;
+}
+.gap-flag { position: absolute; top: 4px; right: 5px; font-size: 10px; line-height: 1; color: var(--gap); font-weight: 700; }
+
+.sc-tx { background: var(--tx-bg); border-color: var(--tx-bd); }
+.sc-tx .sc-title { color: #1e3a8a; } .sc-tx .sc-sub { color: #1d4ed8; }
+.fp-tx { background: var(--tx); }
+
+.sc-at { background: var(--at-bg); border-color: var(--at-bd); }
+.sc-at .sc-title { color: #3730a3; } .sc-at .sc-sub { color: #4f46e5; }
+.fp-at { background: var(--at); }
+
+.sc-dx { background: var(--dx-bg); border-color: var(--dx-bd); }
+.sc-dx .sc-title { color: #134e4a; } .sc-dx .sc-sub { color: #0f766e; }
+.fp-dx { background: var(--dx); }
+
+.sc-dd { background: var(--dd-bg); border-color: var(--dd-bd); }
+.sc-dd .sc-title { color: #14532d; } .sc-dd .sc-sub { color: #15803d; }
+.fp-dd { background: var(--dd); }
+
+.sc-bt { background: var(--bt-bg); border-color: var(--bt-bd); }
+.sc-bt .sc-title { color: #713f12; } .sc-bt .sc-sub { color: #a16207; }
+.fp-bt { background: var(--bt); }
+
+.sc-gp { background: var(--gap-bg); border-color: var(--gap-bd); }
+.sc-gp .sc-title { color: #7f1d1d; } .sc-gp .sc-sub { color: #b91c1c; }
+.fp-gp { background: var(--gap); }
+
+.bench {
+  margin: 8px 0 4px;
+  padding: 9px 12px;
+  border-radius: 7px;
+  background: #f0eeff;
+  border: 1px solid #c4b5fd;
+  font-size: 10.5px;
+  color: #3730a3;
+  line-height: 1.6;
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+.bench strong { color: #1e1b4b; }
+
+.summary-section {
+  padding: 16px 48px 36px;
+  border-top: 2px solid var(--border);
+}
+.summary-section > h2 { font-family: 'Syne', sans-serif; font-size: 17px; font-weight: 700; margin-bottom: 14px; }
+.summary-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 16px; }
+.sum-card { background: var(--surface); border: 1.5px solid var(--border); border-radius: 10px; padding: 14px 16px; }
+.sum-card-header { display: flex; align-items: center; gap: 7px; margin-bottom: 10px; font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 700; }
+.sum-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+.sum-item { font-size: 11px; color: var(--muted); line-height: 1.85; padding-left: 16px; position: relative; }
+.sum-item::before { content: '—'; position: absolute; left: 0; color: #cbd5e1; }
+
+.peer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 12px; }
+.peer-card { border-radius: 8px; padding: 11px 12px; border: 1px solid; }
+.peer-name { font-family: 'Syne', sans-serif; font-size: 10px; font-weight: 700; margin-bottom: 5px; }
+.peer-body { font-size: 9.5px; line-height: 1.65; }
+
+.sdiv { font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); border-bottom:1px solid var(--border); padding-bottom:5px; margin-bottom:10px; }
+
+footer { padding: 12px 48px 24px; border-top: 1px solid var(--border); display: flex; flex-wrap: wrap; gap: 20px; }
+.fn { font-family: 'IBM Plex Mono', monospace; font-size: 8.5px; color: var(--muted); display: flex; gap: 4px; align-items: flex-start; }
+.fn-sup { font-weight: 600; color: #64748b; }
+
+.tooltip {
+  position: fixed; pointer-events: none;
+  background: #1e293b; border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 7px; padding: 10px 13px; max-width: 260px;
+  font-size: 11px; color: #cbd5e1; line-height: 1.55;
+  z-index: 9999; display: none; box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+}
+.tooltip h4 { font-size: 12px; color: #fff; margin-bottom: 4px; font-family: 'Syne', sans-serif; }
+</style>
+</head>
+<body>
+
+<div class="tooltip" id="tt"></div>
+
+<header>
+  <div>
+    <div class="h-eye">Cancer Research UK · Cancer Research Horizons · WS2 Translational Pathways</div>
+    <h1>Translational Research <em>System Map</em></h1>
+  </div>
+  <div class="h-meta">
+    Modalities: Therapeutics · ATIMPs · Diagnostics · Data &amp; Digital · Bio Tools<br>
+    Funding mechanisms mapped per stage · ⚠ = identified gap<br>
+    March 2026
+  </div>
+</header>
+
+<div class="legend-bar">
+  <span class="leg-group-label">Pathways</span>
+  <div class="leg"><div class="leg-sq" style="background:var(--tx-bg);border-color:var(--tx-bd)"></div>Small molecules / antibodies</div>
+  <div class="leg"><div class="leg-sq" style="background:var(--at-bg);border-color:var(--at-bd)"></div>ATIMPs &amp; cancer vaccines</div>
+  <div class="leg"><div class="leg-sq" style="background:var(--dx-bg);border-color:var(--dx-bd)"></div>Biomarkers &amp; diagnostics</div>
+  <div class="leg"><div class="leg-sq" style="background:var(--dd-bg);border-color:var(--dd-bd)"></div>Data &amp; digital</div>
+  <div class="leg"><div class="leg-sq" style="background:var(--bt-bg);border-color:var(--bt-bd)"></div>Biological research tools</div>
+  <div class="leg-div"></div>
+  <span class="leg-group-label">Status</span>
+  <div class="leg"><div class="leg-sq" style="background:var(--ok-bg);border-color:var(--ok-bd)"></div>Adequate</div>
+  <div class="leg"><div class="leg-sq" style="background:#fef3c7;border-color:#fcd34d"></div>Needs scaling</div>
+  <div class="leg"><div class="leg-sq" style="background:var(--gap-bg);border-color:var(--gap-bd)"></div>Gap — no support</div>
+</div>
+
+<div class="stage-header-wrap">
+  <div class="stage-header">
+    <div></div>
+    <div class="sh sh-a">Discovery</div>
+    <div class="sh sh-a">Target / product validation</div>
+    <div class="sh sh-b">Drug / product development</div>
+    <div class="sh sh-c">Spin-out / venture</div>
+    <div class="sh sh-d">Clinical</div>
+    <div class="sh sh-e">Regulatory &amp; market</div>
+  </div>
+  <div class="trl-row">
+    <div></div>
+    <div class="trl-cell">TRL 1–2</div>
+    <div class="trl-cell">TRL 2–3</div>
+    <div class="trl-cell">TRL 3–5</div>
+    <div class="trl-cell">Pre-seed → Series A</div>
+    <div class="trl-cell">TRL 6–8</div>
+    <div class="trl-cell">TRL 8–9</div>
+  </div>
+</div>
+
+<div class="pathways">
+
+  <!-- GROUP 1: THERAPEUTICS SM/AB -->
+  <div class="pathway-group">
+    <div class="group-header">
+      <div class="group-dot" style="background:var(--tx)"></div>
+      <span class="group-name" style="color:var(--tx)">Therapeutics — small molecules &amp; antibodies</span>
+      <span class="group-sub">Regulated IMP pathway · TI in scope · ECMCs / CDD for trials</span>
+    </div>
+
+    <div class="prow" data-tip="<h4>Small Molecule / Antibody (NCE)</h4>Target ID → Hit → Lead → Candidate → IND → Phase I/II/III → NDA/MA. Typical timeline 12–15 years. TI supports small molecules and antibodies from validated target. Key bottleneck: too few sufficiently validated targets emerging from grant portfolio — 8.5% Catalyst success rate. CDD restricted to biotech companies, not academics.">
+      <div class="row-label rl-tx">Small molecule / antibody (NCE / mAb)</div>
+      <div class="sc sc-tx">
+        <div class="sc-title">Basic &amp; applied biology</div>
+        <div class="sc-sub">Target ID, mechanism, phenotypics</div>
+        <div class="fpill fp-tx">DRC / Institutes</div>
+        <div class="ibadge ib-ok">Centres ✓</div>
+      </div>
+      <div class="sc sc-tx">
+        <div class="sc-title">Target validation</div>
+        <div class="sc-sub">Deconvolution, in-vivo PoC</div>
+        <div class="fpill fp-tx">Therapeutic Catalyst £250k</div>
+        <div class="ibadge ib-scale">8.5% success — scale needed</div>
+      </div>
+      <div class="sc sc-tx">
+        <div class="sc-title">Hit → lead → candidate</div>
+        <div class="sc-sub">HTS, MedChem, SBDD, optimisation</div>
+        <div class="fpill fp-tx">TI (in-house)</div>
+        <div class="fpill fp-tx">EVF / TF £250k</div>
+        <div class="ibadge ib-ok">TI labs ✓</div>
+      </div>
+      <div class="sc sc-tx">
+        <div class="sc-title">IP protection &amp; spin-out</div>
+        <div class="sc-sub">Patent filing, BD, seed investment</div>
+        <div class="fpill fp-tx">S&amp;E / BD</div>
+        <div class="fpill fp-tx">CRH Ventures</div>
+        <div class="ibadge ib-ok">CGC ✓</div>
+      </div>
+      <div class="sc sc-tx">
+        <div class="sc-title">IND-enabling → Phase I–III</div>
+        <div class="sc-sub">Safety pharm, tox, CMC, FIH, trials</div>
+        <div class="fpill fp-tx">TI (in-house)</div>
+        <div class="fpill fp-tx">CDD (FIH)</div>
+        <div class="ibadge ib-ok">ECMCs ✓</div>
+      </div>
+      <div class="sc sc-tx">
+        <div class="sc-title">NDA / MA &amp; licensing</div>
+        <div class="sc-sub">Regulatory approval, partnerships</div>
+        <div class="fpill fp-tx">BD / S&amp;E licensing</div>
+        <div class="ibadge ib-ok">BD team ✓</div>
+      </div>
+    </div>
+
+    <div class="prow" data-tip="<h4>Second Medical Use / Repurposing</h4>No new composition of matter. EVF/TF can support early preclinical PoC only where CRUK has an IP stake. Licensing pre-clinical repurposing assets is unattractive — partners require clinical data. No CRUK route for academic-led repurposing beyond preclinical PoC.">
+      <div class="row-label rl-tx">Second medical use / repurposing</div>
+      <div class="sc sc-tx">
+        <div class="sc-title">Biological rationale</div>
+        <div class="sc-sub">Mechanism, indication ID</div>
+        <div class="fpill fp-tx">DRC / PPRC</div>
+      </div>
+      <div class="sc sc-tx" style="background:#fef3c7;border-color:#fcd34d">
+        <div class="sc-title" style="color:#713f12">Compound access α + PoC</div>
+        <div class="sc-sub" style="color:#92400e">EVF/TF (IP stake required)</div>
+        <div class="ibadge ib-scale">Limited eligibility</div>
+      </div>
+      <div class="sc sc-tx" style="background:#fef3c7;border-color:#fcd34d">
+        <div class="sc-title" style="color:#713f12">Preclinical dev</div>
+        <div class="sc-sub" style="color:#92400e">EVF/TF (partial)</div>
+        <div class="ibadge ib-partial">IP stake required</div>
+      </div>
+      <div class="sc sc-tx">
+        <div class="sc-title">Licensing</div>
+        <div class="sc-sub">Pre-clinical assets hard to licence</div>
+        <div class="ibadge ib-partial">Clinical data usually needed</div>
+      </div>
+      <div class="sc sc-gp sc-gap">
+        <div class="gap-flag">⚠</div>
+        <div class="sc-title">Phase I → IIS</div>
+        <div class="sc-sub">No dedicated academic route</div>
+        <div class="fpill fp-gp">No CRUK funding</div>
+      </div>
+      <div class="sc sc-tx">
+        <div class="sc-title">Licence / market</div>
+        <div class="sc-sub">Partner / industry led</div>
+        <div class="fpill fp-tx">BD (case by case)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GROUP 2: ATIMPs -->
+  <div class="pathway-group">
+    <div class="group-header">
+      <div class="group-dot" style="background:var(--at)"></div>
+      <span class="group-name" style="color:var(--at)">ATIMPs — cell &amp; gene therapies, cancer vaccines</span>
+      <span class="group-sub">Regulated ATMP / IMP pathway · TI out of scope · critical system gap</span>
+    </div>
+
+    <div class="prow" data-tip="<h4>ATIMPs — CAR-T, Gene Therapy, Tissue Engineering</h4>Therapeutic Catalyst accepts any modality at target validation but no TI progression route exists for ATIMPs after Catalyst. No GMP facility, no ATMP regulatory expertise, CDD biotech-only. Projects fall out of the system entirely post-validation — the single most significant structural gap.">
+      <div class="row-label rl-at">ATIMPs (CAR-T / gene / tissue)</div>
+      <div class="sc sc-at">
+        <div class="sc-title">Target / gene / antigen ID</div>
+        <div class="sc-sub">Feasibility, rationale</div>
+        <div class="fpill fp-at">DRC</div>
+        <div class="fpill fp-at">Catalyst (target val.)</div>
+      </div>
+      <div class="sc sc-at">
+        <div class="sc-title">Platform dev &amp; refinement</div>
+        <div class="sc-sub">Vector, construct design</div>
+        <div class="fpill fp-at">EVF / TF (partial)</div>
+        <div class="ibadge ib-partial">No dedicated route</div>
+      </div>
+      <div class="sc sc-gp sc-gap">
+        <div class="gap-flag">⚠</div>
+        <div class="sc-title">Modality-specific dev</div>
+        <div class="sc-sub">Cell eng, viral vectors, mfg</div>
+        <div class="fpill fp-gp">No TI support</div>
+        <div class="ibadge ib-gap">TI out of scope</div>
+      </div>
+      <div class="sc sc-gp sc-gap">
+        <div class="gap-flag">⚠</div>
+        <div class="sc-title">Spin-out / venture</div>
+        <div class="sc-sub">Pre-GMP assets hard to fund</div>
+        <div class="fpill fp-gp">No dedicated vehicle</div>
+        <div class="ibadge ib-gap">No GMP facility</div>
+      </div>
+      <div class="sc sc-gp sc-gap">
+        <div class="gap-flag">⚠</div>
+        <div class="sc-title">IND-enabling → Phase I</div>
+        <div class="sc-sub">GMP, immunogenicity, tox</div>
+        <div class="fpill fp-gp">CDD (biotech only)</div>
+        <div class="ibadge ib-gap">Academic route missing</div>
+      </div>
+      <div class="sc sc-gp sc-gap">
+        <div class="gap-flag">⚠</div>
+        <div class="sc-title">CAT / MHRA approval</div>
+        <div class="sc-sub">ATMP regulatory pathway</div>
+        <div class="fpill fp-gp">No CRH support</div>
+        <div class="ibadge ib-gap">No reg capability</div>
+      </div>
+    </div>
+
+    <div class="prow" data-tip="<h4>Cancer Vaccines (therapeutic)</h4>PPRC supports preventive vaccine research but lacks CMC and drug discovery expertise for novel therapeutic vaccine modalities. No GMP vaccine manufacturing facility. Strong case for leveraging Oncode-CRH December 2024 alliance to access Dutch ATMP infrastructure.">
+      <div class="row-label rl-at">Cancer vaccines (therapeutic)</div>
+      <div class="sc sc-at">
+        <div class="sc-title">Neoantigen / antigen ID</div>
+        <div class="sc-sub">Epitope selection, immunogenicity</div>
+        <div class="fpill fp-at">DRC / CGC</div>
+      </div>
+      <div class="sc sc-at">
+        <div class="sc-title">Immunogenicity validation</div>
+        <div class="sc-sub">Platform selection</div>
+        <div class="fpill fp-at">PPRC</div>
+        <div class="fpill fp-at">EVF / TF</div>
+      </div>
+      <div class="sc sc-gp sc-gap">
+        <div class="gap-flag">⚠</div>
+        <div class="sc-title">Formulation &amp; CMC</div>
+        <div class="sc-sub">Adjuvant, delivery, GMP mfg</div>
+        <div class="fpill fp-gp">No dedicated route</div>
+        <div class="ibadge ib-gap">No GMP vaccine mfg</div>
+      </div>
+      <div class="sc sc-at">
+        <div class="sc-title">Spin-out / licensing</div>
+        <div class="sc-sub">Platform company formation</div>
+        <div class="fpill fp-at">CRH Ventures (partial)</div>
+        <div class="ibadge ib-partial">Case by case</div>
+      </div>
+      <div class="sc sc-at">
+        <div class="sc-title">Phase I → III</div>
+        <div class="sc-sub">FIH, efficacy, implementation</div>
+        <div class="fpill fp-at">CRC / ECMC</div>
+        <div class="fpill fp-at">PPRC</div>
+      </div>
+      <div class="sc sc-at">
+        <div class="sc-title">Approval &amp; roll-out</div>
+        <div class="sc-sub">NHS England, impact eval.</div>
+        <div class="fpill fp-at">NHS England</div>
+      </div>
+    </div>
+
+    <div class="bench">
+      <span style="font-size:13px;flex-shrink:0;margin-top:1px">ℹ</span>
+      <span><strong>Benchmark:</strong> Oncode Accelerator invested €325M in shared national GMP infrastructure for all four modality workstreams. MRC DPFS funds ATIMPs with no cap under its regenerative medicine priority. The December 2024 Oncode-CRH strategic alliance is the immediate entry point — the question is whether it is being operationalised as an infrastructure partnership or remains a press release.</span>
+    </div>
+  </div>
+
+  <!-- GROUP 3: DIAGNOSTICS -->
+  <div class="pathway-group">
+    <div class="group-header">
+      <div class="group-dot" style="background:var(--dx)"></div>
+      <span class="group-name" style="color:var(--dx)">Biomarkers, diagnostics &amp; medical devices</span>
+      <span class="group-sub">Regulated IVD / MDR pathway · TRL 1–9 · regulatory stage unsupported</span>
+    </div>
+
+    <div class="prow" data-tip="<h4>Biomarker Test (validated platform)</h4>e.g. new genetic marker panel for hardware in routine clinical use. Regulatory activity (δ) starts at TRL ~5 — once started, all changes must occur within QMS (ISO9001/ISO13485). CRUK offers no support for biomarker tests outside early detection. No route for companion diagnostics or stratification markers.">
+      <div class="row-label rl-dx">Biomarker (validated platform) β</div>
+      <div class="sc sc-dx">
+        <div class="sc-title">Basic &amp; applied research</div>
+        <div class="sc-sub">Signal discovery, platform ID</div>
+        <div class="fpill fp-dx">EDDRC / DRC</div>
+        <div class="ibadge ib-ok">Institutes ✓</div>
+      </div>
+      <div class="sc sc-dx">
+        <div class="sc-title">PoC — lab &amp; clinical setting</div>
+        <div class="sc-sub">Analytical performance</div>
+        <div class="fpill fp-dx">EDDRC</div>
+        <div class="fpill fp-dx">EVF / TF</div>
+        <div class="ibadge ib-scale">Early detection only</div>
+      </div>
+      <div class="sc sc-dx" style="background:#fef3c7;border-color:#fcd34d">
+        <div class="sc-title" style="color:#713f12">Analytical validation</div>
+        <div class="sc-sub" style="color:#92400e">Care pathway, HEOR</div>
+        <div class="fpill fp-bt">EVF / TF £250k</div>
+        <div class="ibadge ib-partial">No stratification Dx</div>
+      </div>
+      <div class="sc sc-gp sc-gap">
+        <div class="gap-flag">⚠</div>
+        <div class="sc-title">Spin-out / licensing</div>
+        <div class="sc-sub">Pre-regulated assets hard to licence</div>
+        <div class="ibadge ib-partial">S&amp;E case by case</div>
+      </div>
+      <div class="sc sc-gp sc-gap">
+        <div class="gap-flag">⚠</div>
+        <div class="sc-title">Reg. activity starts δ</div>
+        <div class="sc-sub">QMS, ISO13485, design lock</div>
+        <div class="fpill fp-gp">£250k TF too small</div>
+        <div class="ibadge ib-gap">No reg facility</div>
+      </div>
+      <div class="sc sc-gp sc-gap">
+        <div class="gap-flag">⚠</div>
+        <div class="sc-title">IVD / UKCA approval</div>
+        <div class="sc-sub">Regulatory submission</div>
+        <div class="fpill fp-gp">No CRH route</div>
+        <div class="ibadge ib-gap">Critical gap</div>
+      </div>
+    </div>
+
+    <div class="prow" data-tip="<h4>Medical Device &amp; Software as Medical Device</h4>Regulated under EU MDR / UKCA / IVDR. Once regulatory activity begins (design freeze δ) all changes must occur within QMS. No affordable accredited facility for device verification/validation. £250k TF ceiling is explicitly insufficient — commercial CRO regulatory outsourcing costs £500k–£2M.">
+      <div class="row-label rl-dx">Medical device / SaMD β χ</div>
+      <div class="sc sc-dx">
+        <div class="sc-title">Ideation &amp; feasibility</div>
+        <div class="sc-sub">Care pathway, HEOR PoC</div>
+        <div class="fpill fp-dx">DRC / EDDRC</div>
+      </div>
+      <div class="sc sc-dx">
+        <div class="sc-title">Prototype &amp; PoC</div>
+        <div class="sc-sub">Hardware / software design</div>
+        <div class="fpill fp-dx">EVF / TF</div>
+        <div class="fpill fp-dx">Data Catalyst</div>
+      </div>
+      <div class="sc sc-gp sc-gap">
+        <div class="gap-flag">⚠</div>
+        <div class="sc-title">Reg. activity starts δ</div>
+        <div class="sc-sub">QMS, ISO9001, design freeze</div>
+        <div class="fpill fp-gp">TF cap insufficient</div>
+        <div class="ibadge ib-gap">No accredited facility</div>
+      </div>
+      <div class="sc sc-gp sc-gap">
+        <div class="gap-flag">⚠</div>
+        <div class="sc-title">Spin-out / licensing</div>
+        <div class="sc-sub">Pre-reg assets unattractive</div>
+        <div class="ibadge ib-gap">BD gap</div>
+      </div>
+      <div class="sc sc-dx">
+        <div class="sc-title">Clinical performance eval.</div>
+        <div class="sc-sub">Observational &amp; interventional</div>
+        <div class="fpill fp-dx">CRC / NHS</div>
+      </div>
+      <div class="sc sc-gp sc-gap">
+        <div class="gap-flag">⚠</div>
+        <div class="sc-title">MDR / UKCA approval</div>
+        <div class="sc-sub">Technical file, premarket</div>
+        <div class="fpill fp-gp">No CRH support</div>
+        <div class="ibadge ib-gap">Critical gap</div>
+      </div>
+    </div>
+
+    <div class="bench">
+      <span style="font-size:13px;flex-shrink:0;margin-top:1px">ℹ</span>
+      <span><strong>Benchmark:</strong> LifeArc PACE funds regulatory-stage diagnostics at £5M per round — vs CRUK's £250k TF ceiling. MRC DPFS has no cap and explicitly funds diagnostics and devices. A dedicated Regulation &amp; Productisation Fund (£500k–£2M per award) is the single most actionable structural fix in the system — a process and budgeting decision, not a capability build.</span>
+    </div>
+  </div>
+
+  <!-- GROUP 4: DATA & DIGITAL -->
+  <div class="pathway-group">
+    <div class="group-header">
+      <div class="group-dot" style="background:var(--dd)"></div>
+      <span class="group-name" style="color:var(--dd)">Data &amp; digital (unregulated)</span>
+      <span class="group-sub">Non-regulated software and dataset productisation · relatively well-served</span>
+    </div>
+
+    <div class="prow" data-tip="<h4>Dataset / Non-regulated Software</h4>Research data assets productised, licensed and linked. Pathway: Generate → Collate → Sanitise → Host → Enrich → Productise → License → Manage. Data Catalyst and Data Generation Awards are primary instruments. Relatively well-served at early stages; commercial route thins at productisation and BD stage.">
+      <div class="row-label rl-dd">Dataset / non-regulated software</div>
+      <div class="sc sc-dd">
+        <div class="sc-title">Generate &amp; identify opportunity</div>
+        <div class="sc-sub">Data collection, ethics</div>
+        <div class="fpill fp-dd">DRC / RCC</div>
+        <div class="ibadge ib-ok">CRUK Data ✓</div>
+      </div>
+      <div class="sc sc-dd">
+        <div class="sc-title">Collate, map &amp; sanitise</div>
+        <div class="sc-sub">Curation, linkage, validate</div>
+        <div class="fpill fp-dd">Data Generation Award</div>
+        <div class="ibadge ib-ok">CRUK Data ✓</div>
+      </div>
+      <div class="sc sc-dd">
+        <div class="sc-title">Software dev &amp; testing</div>
+        <div class="sc-sub">Build, QA, prototype, host</div>
+        <div class="fpill fp-dd">EVF / TF</div>
+        <div class="fpill fp-dd">Data Catalyst</div>
+        <div class="ibadge ib-partial">Limited capacity</div>
+      </div>
+      <div class="sc sc-dd">
+        <div class="sc-title">Spin-out / venture</div>
+        <div class="sc-sub">Company formation, seed round</div>
+        <div class="fpill fp-dd">CRH Ventures</div>
+        <div class="ibadge ib-ok">CGC ✓</div>
+      </div>
+      <div class="sc sc-dd">
+        <div class="sc-title">Productise &amp; market</div>
+        <div class="sc-sub">Pricing, sales, licensing</div>
+        <div class="fpill fp-dd">BD / S&amp;E</div>
+        <div class="ibadge ib-partial">BD capacity thin</div>
+      </div>
+      <div class="sc sc-dd">
+        <div class="sc-title">License &amp; manage</div>
+        <div class="sc-sub">Commercial closure, ongoing</div>
+        <div class="fpill fp-dd">BD / S&amp;E</div>
+        <div class="ibadge ib-ok">S&amp;E ✓</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GROUP 5: BIO TOOLS -->
+  <div class="pathway-group">
+    <div class="group-header">
+      <div class="group-dot" style="background:var(--bt)"></div>
+      <span class="group-name" style="color:var(--bt)">Biological research tools</span>
+      <span class="group-sub">Unregulated · Commercial route via licensing or platform company</span>
+    </div>
+
+    <div class="prow" data-tip="<h4>Biological Research Tools</h4>Cell lines, assays, animal models, reagents, research-use-only kits. Unregulated but commercially valuable. Well-supported at discovery stage through DRC and Functional Genomics Centre. Falls off at productisation — no dedicated manufacturing scale-up route, no focused commercial BD capacity for these assets.">
+      <div class="row-label rl-bt">Research tool / platform (unregulated)</div>
+      <div class="sc sc-bt">
+        <div class="sc-title">Ideation &amp; discovery</div>
+        <div class="sc-sub">Cell lines, assays, models, reagents</div>
+        <div class="fpill fp-bt">DRC</div>
+        <div class="fpill fp-bt">Func. Genomics Centre</div>
+        <div class="ibadge ib-ok">Institutes ✓</div>
+      </div>
+      <div class="sc sc-bt">
+        <div class="sc-title">PoC &amp; validation</div>
+        <div class="sc-sub">Performance, reproducibility</div>
+        <div class="fpill fp-bt">EVF / TF</div>
+        <div class="ibadge ib-ok">Centres ✓</div>
+      </div>
+      <div class="sc sc-bt">
+        <div class="sc-title">IP protection</div>
+        <div class="sc-sub">Patent filing, FTO analysis</div>
+        <div class="fpill fp-bt">S&amp;E filing</div>
+        <div class="ibadge ib-ok">S&amp;E ✓</div>
+      </div>
+      <div class="sc sc-bt">
+        <div class="sc-title">Spin-out / licensing</div>
+        <div class="sc-sub">Company or direct licence</div>
+        <div class="fpill fp-bt">CRH Ventures (partial)</div>
+        <div class="ibadge ib-partial">Entity required</div>
+      </div>
+      <div class="sc sc-gp sc-gap">
+        <div class="gap-flag">⚠</div>
+        <div class="sc-title">Productisation</div>
+        <div class="sc-sub">Scale-up, QC, documentation</div>
+        <div class="fpill fp-gp">No dedicated fund</div>
+        <div class="ibadge ib-gap">No production facility</div>
+      </div>
+      <div class="sc sc-gp sc-gap">
+        <div class="gap-flag">⚠</div>
+        <div class="sc-title">Commercial route</div>
+        <div class="sc-sub">Sale, distribution, partnerships</div>
+        <div class="fpill fp-gp">No dedicated route</div>
+        <div class="ibadge ib-gap">BD capacity gap</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- SUMMARY SECTION -->
+<div class="summary-section">
+  <h2>Infrastructure &amp; funding assessment — what exists, needs scaling, or is missing</h2>
+  <div class="summary-grid">
+    <div class="sum-card">
+      <div class="sum-card-header">
+        <div class="sum-dot" style="background:#10b981"></div>
+        <span style="color:#065f46">Exists — adequate</span>
+      </div>
+      <div class="sum-item">TI drug discovery (small molecules / antibodies)</div>
+      <div class="sum-item">ECMCs — clinical trial infrastructure</div>
+      <div class="sum-item">CDD — FIH trial sponsorship</div>
+      <div class="sum-item">DRC / EDDRC / PPRC grant funding base</div>
+      <div class="sum-item">S&amp;E patent filing capability</div>
+      <div class="sum-item">CRH Ventures / CGC spin-out support</div>
+      <div class="sum-item">CRUK data infrastructure &amp; Data Catalyst</div>
+      <div class="sum-item">Functional Genomics Centre</div>
+      <div class="sum-item">C-Further (paediatric oncology — model for multi-modality)</div>
+    </div>
+    <div class="sum-card">
+      <div class="sum-card-header">
+        <div class="sum-dot" style="background:#f59e0b"></div>
+        <span style="color:#92400e">Exists — needs scaling or fixing</span>
+      </div>
+      <div class="sum-item">Therapeutic Catalyst — 8.5% success rate; substrate and capacity limited</div>
+      <div class="sum-item">EVF / TF — £250k ceiling too low for regulatory-stage work</div>
+      <div class="sum-item">CDD — biotech companies only; no academic direct access</div>
+      <div class="sum-item">Wraparound support — ad hoc per deal, not standardised at award</div>
+      <div class="sum-item">BD / S&amp;E — reactive not proactive; 1 BD per 15 OIs at Oncode</div>
+      <div class="sum-item">Biomarker support — limited to early detection only</div>
+      <div class="sum-item">Translational output tracking — not systematic across portfolio</div>
+    </div>
+    <div class="sum-card">
+      <div class="sum-card-header">
+        <div class="sum-dot" style="background:#ef4444"></div>
+        <span style="color:#991b1b">Missing — critical gaps</span>
+      </div>
+      <div class="sum-item">ATIMP / cell &amp; gene therapy route post-validation</div>
+      <div class="sum-item">GMP manufacturing facility (cell therapy / vaccines)</div>
+      <div class="sum-item">Regulation &amp; Productisation Fund (£500k–£2M per award, IVD/MDR)</div>
+      <div class="sum-item">Accredited regulated facility for diagnostics / device development</div>
+      <div class="sum-item">Stratification biomarker support (outside EDDRC remit)</div>
+      <div class="sum-item">ATMP regulatory expertise (CAT / MHRA pathway)</div>
+      <div class="sum-item">Repurposing fund at clinical stage (investigator-initiated)</div>
+      <div class="sum-item">Milestone-gated development awards (no-cap instrument)</div>
+    </div>
+  </div>
+
+  <div class="sdiv">How peer organisations solve these gaps</div>
+  <div class="peer-grid">
+    <div class="peer-card" style="background:#ede9fe;border-color:#a78bfa;">
+      <div class="peer-name" style="color:#3730a3">Oncode Accelerator</div>
+      <div class="peer-body" style="color:#4f46e5">€325M national GMP infrastructure. All 4 modality workstreams. Patient cohorts + organoids + AI shared. CRH alliance Dec 2024 = existing entry point. Bridge Fund: €1 → €14 external capital leverage.</div>
+    </div>
+    <div class="peer-card" style="background:#d1fae5;border-color:#6ee7b7;">
+      <div class="peer-name" style="color:#065f46">LifeArc PACE</div>
+      <div class="peer-body" style="color:#047857">£5M per round for diagnostics + regulatory work. Wraparound support standard in every award: TPP definition, data packages, regulator engagement. Regulatory &amp; IP as core internal capability. 5 marketed medicines.</div>
+    </div>
+    <div class="peer-card" style="background:#dbeafe;border-color:#93c5fd;">
+      <div class="peer-name" style="color:#1e3a8a">MRC DPFS</div>
+      <div class="peer-body" style="color:#1d4ed8">No funding cap — merit &amp; milestone driven. IAA devolved to institutions £100k–£750k/yr. Spin-outs generated £5.7B equity (34% of all UK pharma/biotech spin-out capital). Explicit NIHR handoff at Phase 2a.</div>
+    </div>
+    <div class="peer-card" style="background:#fef3c7;border-color:#fcd34d;">
+      <div class="peer-name" style="color:#92400e">Stanford SPARK</div>
+      <div class="peer-body" style="color:#b45309">100+ industry volunteer mentors, weekly coaching. $50k/yr per project. 62% success rate. Core insight: knowledge transfer &gt; money. Market readiness as explicit success criterion — not scientific output.</div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="fn"><span class="fn-sup">α</span> Access to compound must be secured via MTA, MoU or licence from compound owner prior to repurposing work beginning.</div>
+  <div class="fn"><span class="fn-sup">β</span> IVD: requires regulatory approval under FDA 510(k)/PMA · EU IVDR · UKCA equivalence.</div>
+  <div class="fn"><span class="fn-sup">χ</span> Medical Device: FDA premarket review · EU MDR · UKCA MDCG.</div>
+  <div class="fn"><span class="fn-sup">δ</span> Once regulatory activity begins all changes must occur within QMS (ISO9001 / ISO13485 / ISO15189). Data not collected within QMS is invalid for regulatory submission.</div>
+  <div class="fn"><span class="fn-sup">⚠</span> Identified gap in CRUK/CRH support. Source: WS2 Translational Pathways Report March 2026 + benchmarking analysis (Oncode, LifeArc, MRC, Stanford SPARK, MIT Deshpande, Wellcome).</div>
+</footer>
+
+<script>
+  const tt = document.getElementById('tt');
+  document.querySelectorAll('.prow[data-tip]').forEach(el => {
+    el.addEventListener('mouseenter', () => { tt.innerHTML = el.dataset.tip; tt.style.display = 'block'; });
+    el.addEventListener('mousemove', e => {
+      let x = e.clientX + 14, y = e.clientY + 14;
+      if (x + 270 > window.innerWidth)  x = e.clientX - 280;
+      if (y + 180 > window.innerHeight) y = e.clientY - 180;
+      tt.style.left = x + 'px';
+      tt.style.top  = y + 'px';
+    });
+    el.addEventListener('mouseleave', () => { tt.style.display = 'none'; });
+  });
+</script>
+</body>
+</html>
